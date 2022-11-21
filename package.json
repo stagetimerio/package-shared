@@ -1,0 +1,16 @@
+{
+  "name": "@stagetimer/shared",
+  "version": "2.6.5",
+  "description": "Shared Library for stagetimer.io",
+  "main": "index.js",
+  "author": "Lukas Hermann <hey@lukashermann.dev>",
+  "private": true,
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lhermann/stagetimer.git"
+  },
+  "type": "module",
+  "dependencies": {
+    "jsonwebtoken": "^8.5.1"
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "extends": [
+    "eslint:recommended",
+    "../.eslintrc.js"
+  ],
+  "parserOptions": {
+    "sourceType": "module",
+    "ecmaVersion": 2020
+  }
+}

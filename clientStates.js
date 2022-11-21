@@ -1,0 +1,13 @@
+export const JOINED = 'JOINED'
+export const LEFT = 'LEFT'
+export const DENIED_ROOM_PROTECTED = 'DENIED_ROOM_PROTECTED'
+export const DENIED_ROOM_FULL = 'DENIED_ROOM_FULL'
+export const DENIED_KICKED = 'DENIED_KICKED'
+
+export const states = {
+  JOINED,
+  LEFT,
+  DENIED_ROOM_PROTECTED,
+  DENIED_ROOM_FULL,
+  DENIED_KICKED,
+}
