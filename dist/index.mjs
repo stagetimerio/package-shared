@@ -296,62 +296,6 @@ const messageColors$1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.def
   colors,
   default: messageColors
 }, Symbol.toStringTag, { value: "Module" }));
-const name = "@stagetimer/shared";
-const version = "1.1.0";
-const description = "Shared Library for stagetimer.io";
-const main = "dist/index.js";
-const scripts = {
-  build: "vite build"
-};
-const exports = {
-  ".": {
-    require: "./dist/index.js",
-    "import": "./dist/index.mjs"
-  }
-};
-const files = [
-  "dist"
-];
-const author = "Lukas Hermann <hey@lukashermann.dev>";
-const repository = {
-  type: "git",
-  url: "git+https://github.com/lhermann/stagetimer-shared.git"
-};
-const dependencies = {
-  jsonwebtoken: "^8.5.1"
-};
-const devDependencies = {
-  vite: "^3.2.4"
-};
-const _package = {
-  name,
-  version,
-  description,
-  main,
-  scripts,
-  exports,
-  files,
-  author,
-  "private": true,
-  repository,
-  dependencies,
-  devDependencies
-};
-const _package$1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
-  __proto__: null,
-  name,
-  version,
-  description,
-  main,
-  scripts,
-  exports,
-  files,
-  author,
-  repository,
-  dependencies,
-  devDependencies,
-  default: _package
-}, Symbol.toStringTag, { value: "Module" }));
 const STOP = "stop";
 const CONTINUE = "continue";
 const behaviors = { STOP, CONTINUE };
@@ -403,9 +347,8 @@ const timersSettings = {
   todFormat: { type: String, default: AUTO },
   behavior: { type: String, default: CONTINUE }
 };
-const settings = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
+const timersSettings$1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
-  timersSettings,
   default: timersSettings
 }, Symbol.toStringTag, { value: "Module" }));
 const UPDATED_DESC = "updated_desc";
@@ -923,42 +866,42 @@ function canChangeToPlan(activePlanId, targetPlanId) {
   const activePlan = getPlanById(activePlanId);
   const targetPlan = getPlanById(targetPlanId);
   let can = false;
-  let description2 = "";
+  let description = "";
   let action = null;
   if (activePlanId === targetPlanId) {
     can = false;
-    description2 = "Your plan";
+    description = "Your plan";
   }
   if ([STARTER, TRIAL, ADMIN, PRO].includes(activePlan.label) && targetPlan.label === PREMIUM) {
     can = true;
-    description2 = "Upgrade to Premium";
+    description = "Upgrade to Premium";
   }
   if ([STARTER, TRIAL, ADMIN].includes(activePlan.label) && targetPlan.label === PRO) {
     can = true;
-    description2 = "Upgrade to Pro";
+    description = "Upgrade to Pro";
   }
   if (activePlan.label === PREMIUM && targetPlan.label === PRO) {
     if (activePlan.type === SUBSCRIPTION && targetPlan.type === SUBSCRIPTION) {
       can = true;
-      description2 = "Downgrade to Pro";
+      description = "Downgrade to Pro";
     } else {
       can = false;
-      description2 = "Included in your plan";
+      description = "Included in your plan";
     }
   }
   if (activePlan.label === targetPlan.label) {
     if (activePlan.billingInterval !== YEARLY && targetPlan.billingInterval === YEARLY) {
       can = true;
-      description2 = "Change to yearly";
+      description = "Change to yearly";
     } else if (activePlan.billingInterval !== MONTHLY && targetPlan.billingInterval === MONTHLY) {
       can = true;
-      description2 = "Change to monthly";
+      description = "Change to monthly";
     } else if (activePlan.billingInterval !== ONE_TIME && targetPlan.billingInterval === ONE_TIME) {
       can = false;
-      description2 = "Included in your plan";
+      description = "Included in your plan";
     }
   }
-  return { can, description: description2, action };
+  return { can, description, action };
 }
 function getElectronSubscription(planId, activeUntil2) {
   const plan = getPlanById(planId);
@@ -1158,8 +1101,6 @@ export {
   customizeOptions,
   electronUid$1 as electronUid,
   messageColors$1 as messageColors,
-  _package$1 as package,
-  settings,
   sortOptions$1 as sortOptions,
   subscriptionHandler,
   timerAppearances$1 as timerAppearances,
@@ -1168,5 +1109,6 @@ export {
   timerModes$1 as timerModes,
   timerTriggers$1 as timerTriggers,
   timerTypes$1 as timerTypes,
+  timersSettings$1 as timersSettings,
   todFormats$1 as todFormats
 };
