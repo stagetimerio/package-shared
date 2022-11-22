@@ -280,10 +280,14 @@ const customizeOptions = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.de
   DEFAULT_MESSAGE_SIZE,
   DEFAULT_LOGO_SIZE
 }, Symbol.toStringTag, { value: "Module" }));
-const electronUid = "STAGETIMERUSER0001";
-const electronUid$1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
+const uid = "STAGETIMERUSER0001";
+const electronConstants = {
+  uid
+};
+const electronConstants$1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
-  default: electronUid
+  uid,
+  default: electronConstants
 }, Symbol.toStringTag, { value: "Module" }));
 const WHITE = "white";
 const GREEN = "green";
@@ -1106,7 +1110,7 @@ exports.clientStates = clientStates;
 exports.clientViews = clientViews$1;
 exports.countdownFormats = countdownFormats$2;
 exports.customizeOptions = customizeOptions;
-exports.electronUid = electronUid$1;
+exports.electronConstants = electronConstants$1;
 exports.messageColors = messageColors$1;
 exports.sortOptions = sortOptions$1;
 exports.subscriptionHandler = subscriptionHandler;
