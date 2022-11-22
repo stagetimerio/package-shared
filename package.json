@@ -1,6 +1,6 @@
 {
   "name": "@stagetimer/shared",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Shared Library for stagetimer.io",
   "main": "dist/index.js",
   "exports": {
