@@ -9,6 +9,7 @@
       "import": "./dist/index.js"
     }
   },
+  "files": ["dist"],
   "author": "Lukas Hermann <hey@lukashermann.dev>",
   "private": true,
   "repository": {
