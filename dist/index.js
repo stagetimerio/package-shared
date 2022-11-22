@@ -960,7 +960,7 @@ const WHITE = "white";
 const GREEN = "green";
 const RED = "red";
 const colors = { WHITE, GREEN, RED };
-const messageColors = { ...colors };
+const messageColors = { WHITE, GREEN, RED };
 const messageColors$1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
   WHITE,
