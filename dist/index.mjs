@@ -1,5 +1,3 @@
-"use strict";
-Object.defineProperties(exports, { __esModule: { value: true }, [Symbol.toStringTag]: { value: "Module" } });
 const UNKNOWN = "UNKNOWN";
 const CONNECTED = "CONNECTED";
 const DISCONNECTED = "DISCONNECTED";
@@ -305,7 +303,7 @@ const main = "dist/index.js";
 const scripts = {
   build: "vite build"
 };
-const exports$1 = {
+const exports = {
   ".": {
     require: "./dist/index.js",
     "import": "./dist/index.mjs"
@@ -331,7 +329,7 @@ const _package = {
   description,
   main,
   scripts,
-  exports: exports$1,
+  exports,
   files,
   author,
   "private": true,
@@ -346,7 +344,7 @@ const _package$1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.definePr
   description,
   main,
   scripts,
-  exports: exports$1,
+  exports,
   files,
   author,
   repository,
@@ -1152,21 +1150,23 @@ const timerTypes$1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.define
   types,
   default: timerTypes
 }, Symbol.toStringTag, { value: "Module" }));
-exports.clientLifecycle = clientLifecycle;
-exports.clientStates = clientStates;
-exports.clientViews = clientViews$1;
-exports.countdownFormats = countdownFormats$2;
-exports.customizeOptions = customizeOptions;
-exports.electronUid = electronUid$1;
-exports.messageColors = messageColors$1;
-exports.package = _package$1;
-exports.settings = settings;
-exports.sortOptions = sortOptions$1;
-exports.subscriptionHandler = subscriptionHandler;
-exports.timerAppearances = timerAppearances$1;
-exports.timerBehaviors = timerBehaviors$1;
-exports.timerChimes = timerChimes$1;
-exports.timerModes = timerModes$1;
-exports.timerTriggers = timerTriggers$1;
-exports.timerTypes = timerTypes$1;
-exports.todFormats = todFormats$1;
+export {
+  clientLifecycle,
+  clientStates,
+  clientViews$1 as clientViews,
+  countdownFormats$2 as countdownFormats,
+  customizeOptions,
+  electronUid$1 as electronUid,
+  messageColors$1 as messageColors,
+  _package$1 as package,
+  settings,
+  sortOptions$1 as sortOptions,
+  subscriptionHandler,
+  timerAppearances$1 as timerAppearances,
+  timerBehaviors$1 as timerBehaviors,
+  timerChimes$1 as timerChimes,
+  timerModes$1 as timerModes,
+  timerTriggers$1 as timerTriggers,
+  timerTypes$1 as timerTypes,
+  todFormats$1 as todFormats
+};

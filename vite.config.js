@@ -6,7 +6,7 @@ export default defineConfig({
     target: 'node16',
     outDir: 'dist',
     assetsDir: '.',
-    minify: true,
+    minify: false,
     lib: {
       entry: 'index.js',
       formats: ['es', 'cjs'],

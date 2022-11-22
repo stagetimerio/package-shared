@@ -3,10 +3,13 @@
   "version": "1.1.0",
   "description": "Shared Library for stagetimer.io",
   "main": "dist/index.js",
+  "scripts": {
+    "build": "vite build"
+  },
   "exports": {
     ".": {
-      "require": "./dist/index.cjs",
-      "import": "./dist/index.js"
+      "require": "./dist/index.js",
+      "import": "./dist/index.mjs"
     }
   },
   "files": ["dist"],
@@ -16,7 +19,6 @@
     "type": "git",
     "url": "git+https://github.com/lhermann/stagetimer-shared.git"
   },
-  "type": "module",
   "dependencies": {
     "jsonwebtoken": "^8.5.1"
   },
