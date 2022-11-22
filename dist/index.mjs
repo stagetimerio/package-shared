@@ -1,3 +1,4 @@
+import jwt from "jsonwebtoken";
 const UNKNOWN = "UNKNOWN";
 const CONNECTED = "CONNECTED";
 const DISCONNECTED = "DISCONNECTED";
@@ -282,92 +283,6 @@ const electronUid = "STAGETIMERUSER0001";
 const electronUid$1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
   default: electronUid
-}, Symbol.toStringTag, { value: "Module" }));
-const WHITE = "white";
-const GREEN = "green";
-const RED = "red";
-const colors = { WHITE, GREEN, RED };
-const messageColors = { ...colors };
-const messageColors$1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
-  __proto__: null,
-  WHITE,
-  GREEN,
-  RED,
-  colors,
-  default: messageColors
-}, Symbol.toStringTag, { value: "Module" }));
-const STOP = "stop";
-const CONTINUE = "continue";
-const behaviors = { STOP, CONTINUE };
-const timerBehaviors = { ...behaviors };
-const timerBehaviors$1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
-  __proto__: null,
-  STOP,
-  CONTINUE,
-  behaviors,
-  default: timerBehaviors
-}, Symbol.toStringTag, { value: "Module" }));
-const AUTO = "AUTO";
-const HHMMSS = "H:mm:ss";
-const HHMM = "H:mm";
-const HHMMSS_AM = "h:mm:ss aa";
-const HHMM_AM = "h:mm aa";
-const HHMMSS_12H = "h:mm:ss";
-const HHMM_12H = "h:mm";
-const DEFAULT_H12 = HHMMSS_AM;
-const DEFAULT_H24 = HHMMSS;
-const isH12 = (todFormat) => [HHMMSS_AM, HHMM_AM, HHMMSS_12H, HHMM_12H].includes(todFormat);
-const isH24 = (todFormat) => [HHMMSS, HHMM].includes(todFormat);
-const formats = { AUTO, HHMMSS, HHMM, HHMMSS_AM, HHMM_AM, HHMMSS_12H, HHMM_12H };
-const todFormats = {
-  ...formats,
-  DEFAULT_H12,
-  DEFAULT_H24,
-  isH12,
-  isH24
-};
-const todFormats$1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
-  __proto__: null,
-  AUTO,
-  HHMMSS,
-  HHMM,
-  HHMMSS_AM,
-  HHMM_AM,
-  HHMMSS_12H,
-  HHMM_12H,
-  DEFAULT_H12,
-  DEFAULT_H24,
-  isH12,
-  isH24,
-  formats,
-  default: todFormats
-}, Symbol.toStringTag, { value: "Module" }));
-const timersSettings = {
-  countdownFormat: { type: String, default: HHMMSS$1 },
-  todFormat: { type: String, default: AUTO },
-  behavior: { type: String, default: CONTINUE }
-};
-const timersSettings$1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
-  __proto__: null,
-  default: timersSettings
-}, Symbol.toStringTag, { value: "Module" }));
-const UPDATED_DESC = "updated_desc";
-const CREATED_DESC = "created_desc";
-const CREATED_ASC = "created_asc";
-const NAME_ASC = "name_asc";
-const sortOptions = {
-  UPDATED_DESC,
-  CREATED_DESC,
-  CREATED_ASC,
-  NAME_ASC
-};
-const sortOptions$1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
-  __proto__: null,
-  UPDATED_DESC,
-  CREATED_DESC,
-  CREATED_ASC,
-  NAME_ASC,
-  default: sortOptions
 }, Symbol.toStringTag, { value: "Module" }));
 const SUBSCRIPTION = "subscription";
 const PRODUCT = "product";
@@ -996,6 +911,133 @@ const subscriptionHandler = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object
   canChangeToPlan,
   getElectronSubscription
 }, Symbol.toStringTag, { value: "Module" }));
+const schema = {
+  planId: { type: Number, default: 0 },
+  email: { type: String, default: null },
+  uid: { type: String, default: null }
+};
+function signToken(payload, privateKey, expiresIn = "1 month") {
+  return jwt.sign(_applySchema(payload), privateKey, { algorithm: "RS256", expiresIn });
+}
+function validateToken(tokenString, publicKey) {
+  let decoded, valid;
+  try {
+    decoded = jwt.verify(tokenString, publicKey, { algorithms: ["RS256"] });
+    decoded.exp = new Date(decoded.exp * 1e3);
+    valid = true;
+  } catch (err) {
+    if (!err.message.includes("jwt must be provided"))
+      console.error("[shared/licenseTokenHandler.js]", err.message);
+    decoded = { exp: err.expiredAt || null };
+    valid = false;
+  }
+  return {
+    ..._applySchema(decoded),
+    exp: decoded.exp,
+    plan: getPlanById(decoded.planId),
+    token: tokenString,
+    valid,
+    active: new Date() < decoded.exp
+  };
+}
+function _applySchema(payload = {}) {
+  const result = {};
+  for (const key in schema) {
+    result[key] = payload[key] || schema[key].default;
+  }
+  return result;
+}
+const licenseTokenHandler = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
+  __proto__: null,
+  signToken,
+  validateToken
+}, Symbol.toStringTag, { value: "Module" }));
+const WHITE = "white";
+const GREEN = "green";
+const RED = "red";
+const colors = { WHITE, GREEN, RED };
+const messageColors = { ...colors };
+const messageColors$1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
+  __proto__: null,
+  WHITE,
+  GREEN,
+  RED,
+  colors,
+  default: messageColors
+}, Symbol.toStringTag, { value: "Module" }));
+const STOP = "stop";
+const CONTINUE = "continue";
+const behaviors = { STOP, CONTINUE };
+const timerBehaviors = { ...behaviors };
+const timerBehaviors$1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
+  __proto__: null,
+  STOP,
+  CONTINUE,
+  behaviors,
+  default: timerBehaviors
+}, Symbol.toStringTag, { value: "Module" }));
+const AUTO = "AUTO";
+const HHMMSS = "H:mm:ss";
+const HHMM = "H:mm";
+const HHMMSS_AM = "h:mm:ss aa";
+const HHMM_AM = "h:mm aa";
+const HHMMSS_12H = "h:mm:ss";
+const HHMM_12H = "h:mm";
+const DEFAULT_H12 = HHMMSS_AM;
+const DEFAULT_H24 = HHMMSS;
+const isH12 = (todFormat) => [HHMMSS_AM, HHMM_AM, HHMMSS_12H, HHMM_12H].includes(todFormat);
+const isH24 = (todFormat) => [HHMMSS, HHMM].includes(todFormat);
+const formats = { AUTO, HHMMSS, HHMM, HHMMSS_AM, HHMM_AM, HHMMSS_12H, HHMM_12H };
+const todFormats = {
+  ...formats,
+  DEFAULT_H12,
+  DEFAULT_H24,
+  isH12,
+  isH24
+};
+const todFormats$1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
+  __proto__: null,
+  AUTO,
+  HHMMSS,
+  HHMM,
+  HHMMSS_AM,
+  HHMM_AM,
+  HHMMSS_12H,
+  HHMM_12H,
+  DEFAULT_H12,
+  DEFAULT_H24,
+  isH12,
+  isH24,
+  formats,
+  default: todFormats
+}, Symbol.toStringTag, { value: "Module" }));
+const timersSettings = {
+  countdownFormat: { type: String, default: HHMMSS$1 },
+  todFormat: { type: String, default: AUTO },
+  behavior: { type: String, default: CONTINUE }
+};
+const timersSettings$1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
+  __proto__: null,
+  default: timersSettings
+}, Symbol.toStringTag, { value: "Module" }));
+const UPDATED_DESC = "updated_desc";
+const CREATED_DESC = "created_desc";
+const CREATED_ASC = "created_asc";
+const NAME_ASC = "name_asc";
+const sortOptions = {
+  UPDATED_DESC,
+  CREATED_DESC,
+  CREATED_ASC,
+  NAME_ASC
+};
+const sortOptions$1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
+  __proto__: null,
+  UPDATED_DESC,
+  CREATED_DESC,
+  CREATED_ASC,
+  NAME_ASC,
+  default: sortOptions
+}, Symbol.toStringTag, { value: "Module" }));
 const COUNTDOWN$1 = "COUNTDOWN";
 const COUNTUP$1 = "COUNTUP";
 const TOD$1 = "TOD";
@@ -1100,6 +1142,7 @@ export {
   countdownFormats$2 as countdownFormats,
   customizeOptions,
   electronUid$1 as electronUid,
+  licenseTokenHandler,
   messageColors$1 as messageColors,
   sortOptions$1 as sortOptions,
   subscriptionHandler,
