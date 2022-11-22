@@ -1,4 +1,5 @@
 import { defineConfig } from 'vite'
+import rollupPluginNodePolyfills from 'rollup-plugin-node-polyfills'
 
 export default defineConfig({
   resolve: {
@@ -9,7 +10,8 @@ export default defineConfig({
   },
   build: {
     ssr: true,
-    target: 'node16',
+    // target: 'node16',
+    target: ['node16', 'chrome84', 'firefox70', 'safari13.1', 'edge84'],
     outDir: 'dist',
     assetsDir: '.',
     minify: false,
@@ -20,5 +22,12 @@ export default defineConfig({
     },
     emptyOutDir: true,
     reportCompressedSize: false,
+    rollupOptions: {
+      plugins: [
+        // Enable rollup polyfills plugin
+        // used during production bundling
+        rollupPluginNodePolyfills(),
+      ],
+    },
   },
 })
