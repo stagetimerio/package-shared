@@ -316,8 +316,8 @@ const HHMMSS_12H = "h:mm:ss";
 const HHMM_12H = "h:mm";
 const DEFAULT_H12 = HHMMSS_AM;
 const DEFAULT_H24 = HHMMSS;
-const isH12 = (todFormat) => [HHMMSS_AM, HHMM_AM, HHMMSS_12H, HHMM_12H].includes(todFormat);
-const isH24 = (todFormat) => [HHMMSS, HHMM].includes(todFormat);
+const isH12 = (todFormat2) => [HHMMSS_AM, HHMM_AM, HHMMSS_12H, HHMM_12H].includes(todFormat2);
+const isH24 = (todFormat2) => [HHMMSS, HHMM].includes(todFormat2);
 const formats = { AUTO, HHMMSS, HHMM, HHMMSS_AM, HHMM_AM, HHMMSS_12H, HHMM_12H };
 const todFormats = {
   ...formats,
@@ -342,13 +342,19 @@ const todFormats$1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.define
   formats,
   default: todFormats
 }, Symbol.toStringTag, { value: "Module" }));
+const countdownFormat = { type: String, default: HHMMSS$1 };
+const todFormat = { type: String, default: AUTO };
+const behavior = { type: String, default: CONTINUE };
 const timersSettings = {
-  countdownFormat: { type: String, default: HHMMSS$1 },
-  todFormat: { type: String, default: AUTO },
-  behavior: { type: String, default: CONTINUE }
+  countdownFormat,
+  todFormat,
+  behavior
 };
 const timersSettings$1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
+  countdownFormat,
+  todFormat,
+  behavior,
   default: timersSettings
 }, Symbol.toStringTag, { value: "Module" }));
 const UPDATED_DESC = "updated_desc";
