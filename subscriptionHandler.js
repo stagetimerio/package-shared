@@ -567,13 +567,13 @@ export function nextBillingAmount (payload) {
   return 0
 }
 
-export function isAdmin (payload) {
-  const plan = getPlan(payload)
+export function isAdmin (subscriptionEntity) {
+  const plan = getPlan(subscriptionEntity)
   return Boolean(plan?.label === ADMIN)
 }
 
-export function isEnterprise (payload, now = new Date()) {
-  const plan = getPlan(payload)
+export function isEnterprise (subscriptionEntity, now = new Date()) {
+  const plan = getPlan(subscriptionEntity)
   return plan.tags.includes('enterprise')
 }
 
