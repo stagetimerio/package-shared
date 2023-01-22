@@ -365,10 +365,9 @@ export const FREE_PLAN = PLANS[0]
 export const PRODUCT_DAYS = 10
 
 export function getPlan (subscriptionEntity) {
-  let id = 0
+  let id = Number(subscriptionEntity?.plan_id)
   if (subscriptionEntity?.type === SUBSCRIPTION) id = Number(subscriptionEntity?.subscription_plan_id)
   if (subscriptionEntity?.type === PRODUCT) id = Number(subscriptionEntity?.product_id)
-  if (subscriptionEntity?.type === SPECIAL) id = Number(subscriptionEntity?.plan_id)
   return getPlanById(id)
 }
 

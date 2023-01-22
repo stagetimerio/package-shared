@@ -684,13 +684,11 @@ const PLANS = {
 const FREE_PLAN = PLANS[0];
 const PRODUCT_DAYS = 10;
 function getPlan(subscriptionEntity) {
-  let id = 0;
+  let id = Number(subscriptionEntity == null ? void 0 : subscriptionEntity.plan_id);
   if ((subscriptionEntity == null ? void 0 : subscriptionEntity.type) === SUBSCRIPTION)
     id = Number(subscriptionEntity == null ? void 0 : subscriptionEntity.subscription_plan_id);
   if ((subscriptionEntity == null ? void 0 : subscriptionEntity.type) === PRODUCT)
     id = Number(subscriptionEntity == null ? void 0 : subscriptionEntity.product_id);
-  if ((subscriptionEntity == null ? void 0 : subscriptionEntity.type) === SPECIAL)
-    id = Number(subscriptionEntity == null ? void 0 : subscriptionEntity.plan_id);
   return getPlanById(id);
 }
 function getPlanById(id = 0) {
