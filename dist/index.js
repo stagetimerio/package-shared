@@ -790,7 +790,7 @@ function planIsActive(payload, now = new Date()) {
   return false;
 }
 function activeUntil(payload = "") {
-  if (!payload || planIsArchived(payload) || isEnterprise(payload))
+  if (!payload || planIsArchived(payload) || isAdmin(payload))
     return null;
   if ((payload == null ? void 0 : payload.type) === SUBSCRIPTION) {
     let date = payload.next_bill_date;
@@ -803,18 +803,10 @@ function activeUntil(payload = "") {
   if ((payload == null ? void 0 : payload.type) === PRODUCT) {
     return addDays(new Date(payload.created), PRODUCT_DAYS);
   }
-  if ((payload == null ? void 0 : payload.type) === ENTERPRISE) {
-    return payload.active_until ? new Date(payload.active_until) : null;
-  }
-  if ((payload == null ? void 0 : payload.type) === SPECIAL) {
-    if (isAdmin(payload))
-      return null;
-    return payload.active_until ? new Date(payload.active_until) : null;
-  }
-  return null;
+  return payload.active_until ? new Date(payload.active_until) : null;
 }
 function activeUntilLabel(payload) {
-  if (!payload || planIsArchived(payload) || isAdmin(payload) || isEnterprise(payload))
+  if (!payload || planIsArchived(payload) || isAdmin(payload))
     return "";
   if ((payload == null ? void 0 : payload.type) === FREE)
     return "";

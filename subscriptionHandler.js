@@ -519,7 +519,7 @@ export function planIsActive (payload, now = new Date()) {
 }
 
 export function activeUntil (payload = '') {
-  if (!payload || planIsArchived(payload) || isEnterprise(payload)) return null
+  if (!payload || planIsArchived(payload) || isAdmin(payload)) return null
   if (payload?.type === SUBSCRIPTION) {
     let date = payload.next_bill_date
     if (payload.status === PAST_DUE) date = payload.next_retry_date
@@ -529,18 +529,11 @@ export function activeUntil (payload = '') {
   if (payload?.type === PRODUCT) {
     return addDays(new Date(payload.created), PRODUCT_DAYS)
   }
-  if (payload?.type === ENTERPRISE) {
-    return payload.active_until ? new Date(payload.active_until) : null
-  }
-  if (payload?.type === SPECIAL) {
-    if (isAdmin(payload)) return null
-    return payload.active_until ? new Date(payload.active_until) : null
-  }
-  return null
+  return payload.active_until ? new Date(payload.active_until) : null
 }
 
 export function activeUntilLabel (payload) {
-  if (!payload || planIsArchived(payload) || isAdmin(payload) || isEnterprise(payload)) return ''
+  if (!payload || planIsArchived(payload) || isAdmin(payload)) return ''
   if (payload?.type === FREE) return ''
 
   const isActive = planIsActive(payload)
