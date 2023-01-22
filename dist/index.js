@@ -638,7 +638,7 @@ const PLANS = {
     label: PRO,
     limits: { rooms: -1, devices: 10, timers: -1, messages: -1 },
     permissions: [LICENSED, API_ACCESS, CUSTOM_LOGO],
-    billingInterval: YEARLY,
+    billingInterval: NONE$1,
     tags: ["enterprise"]
   },
   2001: {
@@ -648,7 +648,7 @@ const PLANS = {
     label: PRO,
     limits: { rooms: -1, devices: 20, timers: -1, messages: -1 },
     permissions: [LICENSED, API_ACCESS, CUSTOM_LOGO],
-    billingInterval: YEARLY,
+    billingInterval: NONE$1,
     tags: ["enterprise"]
   },
   100: {
