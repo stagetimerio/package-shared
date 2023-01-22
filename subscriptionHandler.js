@@ -1,9 +1,10 @@
 // Plan Type
 export const SUBSCRIPTION = 'subscription'
 export const PRODUCT = 'product'
+export const ENTERPRISE = 'enterprise'
 export const SPECIAL = 'special'
 export const FREE = 'free'
-export const types = { SUBSCRIPTION, PRODUCT, SPECIAL, FREE }
+export const types = { SUBSCRIPTION, PRODUCT, ENTERPRISE, SPECIAL, FREE }
 
 // Paddle States
 export const ACTIVE = 'active'
@@ -298,7 +299,7 @@ export const PLANS = {
 
   2000: {
     id: 2000,
-    type: SUBSCRIPTION,
+    type: ENTERPRISE,
     name: 'stagetimer.io Enterprise Pro',
     label: PRO,
     limits: { rooms: -1, devices: 10, timers: -1, messages: -1 },
@@ -309,7 +310,7 @@ export const PLANS = {
 
   2001: {
     id: 2001,
-    type: SUBSCRIPTION,
+    type: ENTERPRISE,
     name: 'stagetimer.io Enterprise Pro 20',
     label: PRO,
     limits: { rooms: -1, devices: 20, timers: -1, messages: -1 },
@@ -501,6 +502,13 @@ export function planIsActive (payload, now = new Date()) {
     return isBeforeDeadline
   }
 
+  // Handle Enterprise
+  if (payload?.type === ENTERPRISE) {
+    if (!payload.active_until) return true
+    const deadline = payload.active_until
+    return deadline ? now < new Date(deadline) : false
+  }
+
   // Handle Specials
   if (payload?.type === SPECIAL) {
     if (plan?.label === ADMIN) return true
@@ -521,6 +529,9 @@ export function activeUntil (payload = '') {
   }
   if (payload?.type === PRODUCT) {
     return addDays(new Date(payload.created), PRODUCT_DAYS)
+  }
+  if (payload?.type === ENTERPRISE) {
+    return payload.active_until ? new Date(payload.active_until) : null
   }
   if (payload?.type === SPECIAL) {
     if (isAdmin(payload)) return null
@@ -557,9 +568,9 @@ export function isAdmin (subscriptionEntity) {
   return Boolean(plan?.label === ADMIN)
 }
 
-export function isEnterprise (subscriptionEntity, now = new Date()) {
+export function isEnterprise (subscriptionEntity) {
   const plan = getPlan(subscriptionEntity)
-  return plan.tags.includes('enterprise')
+  return Boolean(plan?.type === ENTERPRISE)
 }
 
 export function parseFirebaseDocument (payload) {
@@ -647,11 +658,13 @@ export function getElectronSubscription (planId, activeUntil) {
   // planId key
   if (plan.type === SUBSCRIPTION) payload.subscription_plan_id = planId
   if (plan.type === PRODUCT) payload.product_id = planId
+  if (plan.type === ENTERPRISE) payload.plan_id = planId
   if (plan.type === SPECIAL) payload.plan_id = planId
 
   // active until
   if (plan.type === SUBSCRIPTION) payload.next_bill_date = new Date(activeUntil)
   if (plan.type === PRODUCT) payload.created = addDays(new Date(activeUntil), -PRODUCT_DAYS)
+  if (plan.type === ENTERPRISE) payload.active_until = new Date(activeUntil)
   if (plan.type === SPECIAL) payload.active_until = new Date(activeUntil)
 
   return payload

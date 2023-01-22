@@ -381,9 +381,10 @@ const sortOptions$1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defin
 }, Symbol.toStringTag, { value: "Module" }));
 const SUBSCRIPTION = "subscription";
 const PRODUCT = "product";
+const ENTERPRISE = "enterprise";
 const SPECIAL = "special";
 const FREE = "free";
-const types$1 = { SUBSCRIPTION, PRODUCT, SPECIAL, FREE };
+const types$1 = { SUBSCRIPTION, PRODUCT, ENTERPRISE, SPECIAL, FREE };
 const ACTIVE = "active";
 const TRIALING = "trialing";
 const PAST_DUE = "past_due";
@@ -631,7 +632,7 @@ const PLANS = {
   },
   2e3: {
     id: 2e3,
-    type: SUBSCRIPTION,
+    type: ENTERPRISE,
     name: "stagetimer.io Enterprise Pro",
     label: PRO,
     limits: { rooms: -1, devices: 10, timers: -1, messages: -1 },
@@ -641,7 +642,7 @@ const PLANS = {
   },
   2001: {
     id: 2001,
-    type: SUBSCRIPTION,
+    type: ENTERPRISE,
     name: "stagetimer.io Enterprise Pro 20",
     label: PRO,
     limits: { rooms: -1, devices: 20, timers: -1, messages: -1 },
@@ -774,6 +775,12 @@ function planIsActive(payload, now = new Date()) {
     const isBeforeDeadline = isValidDate(deadline) ? now < deadline : false;
     return isBeforeDeadline;
   }
+  if ((payload == null ? void 0 : payload.type) === ENTERPRISE) {
+    if (!payload.active_until)
+      return true;
+    const deadline = payload.active_until;
+    return deadline ? now < new Date(deadline) : false;
+  }
   if ((payload == null ? void 0 : payload.type) === SPECIAL) {
     if ((plan == null ? void 0 : plan.label) === ADMIN)
       return true;
@@ -795,6 +802,9 @@ function activeUntil(payload = "") {
   }
   if ((payload == null ? void 0 : payload.type) === PRODUCT) {
     return addDays(new Date(payload.created), PRODUCT_DAYS);
+  }
+  if ((payload == null ? void 0 : payload.type) === ENTERPRISE) {
+    return payload.active_until ? new Date(payload.active_until) : null;
   }
   if ((payload == null ? void 0 : payload.type) === SPECIAL) {
     if (isAdmin(payload))
@@ -835,9 +845,9 @@ function isAdmin(subscriptionEntity) {
   const plan = getPlan(subscriptionEntity);
   return Boolean((plan == null ? void 0 : plan.label) === ADMIN);
 }
-function isEnterprise(subscriptionEntity, now = new Date()) {
+function isEnterprise(subscriptionEntity) {
   const plan = getPlan(subscriptionEntity);
-  return plan.tags.includes("enterprise");
+  return Boolean((plan == null ? void 0 : plan.type) === ENTERPRISE);
 }
 function parseFirebaseDocument(payload) {
   if (!payload)
@@ -908,12 +918,16 @@ function getElectronSubscription(planId, activeUntil2) {
     payload.subscription_plan_id = planId;
   if (plan.type === PRODUCT)
     payload.product_id = planId;
+  if (plan.type === ENTERPRISE)
+    payload.plan_id = planId;
   if (plan.type === SPECIAL)
     payload.plan_id = planId;
   if (plan.type === SUBSCRIPTION)
     payload.next_bill_date = new Date(activeUntil2);
   if (plan.type === PRODUCT)
     payload.created = addDays(new Date(activeUntil2), -PRODUCT_DAYS);
+  if (plan.type === ENTERPRISE)
+    payload.active_until = new Date(activeUntil2);
   if (plan.type === SPECIAL)
     payload.active_until = new Date(activeUntil2);
   return payload;
@@ -941,6 +955,7 @@ const subscriptionHandler = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object
   __proto__: null,
   SUBSCRIPTION,
   PRODUCT,
+  ENTERPRISE,
   SPECIAL,
   FREE,
   types: types$1,
