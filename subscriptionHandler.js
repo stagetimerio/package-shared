@@ -296,6 +296,17 @@ export const PLANS = {
    * Enterprise
    ******************************************/
 
+  2000: {
+    id: 2000,
+    type: SUBSCRIPTION,
+    name: 'stagetimer.io Enterprise Pro',
+    label: PRO,
+    limits: { rooms: -1, devices: 10, timers: -1, messages: -1 },
+    permissions: [LICENSED, API_ACCESS, CUSTOM_LOGO],
+    billingInterval: YEARLY,
+    tags: ['enterprise'],
+  },
+
   2001: {
     id: 2001,
     type: SUBSCRIPTION,
