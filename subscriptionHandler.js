@@ -57,7 +57,6 @@ export const PLANS = {
     limits: { rooms: -1, devices: 100, timers: -1, messages: -1 },
     permissions: [LICENSED, API_ACCESS, CUSTOM_LOGO, CUSTOM_THEMING],
     billingInterval: MONTHLY,
-    legacy: false,
     tags: [],
   },
   777755: {
@@ -68,7 +67,6 @@ export const PLANS = {
     limits: { rooms: -1, devices: 100, timers: -1, messages: -1 },
     permissions: [LICENSED, API_ACCESS, CUSTOM_LOGO, CUSTOM_THEMING],
     billingInterval: YEARLY,
-    legacy: false,
     tags: [],
   },
   777758: {
@@ -79,7 +77,6 @@ export const PLANS = {
     limits: { rooms: -1, devices: 100, timers: -1, messages: -1 },
     permissions: [LICENSED, API_ACCESS, CUSTOM_LOGO, CUSTOM_THEMING],
     billingInterval: ONE_TIME,
-    legacy: false,
     tags: [],
   },
 
@@ -95,7 +92,6 @@ export const PLANS = {
     limits: { rooms: -1, devices: 10, timers: -1, messages: -1 },
     permissions: [LICENSED, API_ACCESS, CUSTOM_LOGO],
     billingInterval: MONTHLY,
-    legacy: false,
     tags: [],
   },
   777753: {
@@ -106,7 +102,6 @@ export const PLANS = {
     limits: { rooms: -1, devices: 10, timers: -1, messages: -1 },
     permissions: [LICENSED, API_ACCESS, CUSTOM_LOGO],
     billingInterval: YEARLY,
-    legacy: false,
     tags: [],
   },
   777757: {
@@ -117,7 +112,6 @@ export const PLANS = {
     limits: { rooms: -1, devices: 10, timers: -1, messages: -1 },
     permissions: [LICENSED, API_ACCESS, CUSTOM_LOGO],
     billingInterval: ONE_TIME,
-    legacy: false,
     tags: [],
   },
   // 2022-06
@@ -129,7 +123,6 @@ export const PLANS = {
     limits: { rooms: -1, devices: 50, timers: -1, messages: -1 },
     permissions: [LICENSED, API_ACCESS, CUSTOM_LOGO, CUSTOM_THEMING],
     billingInterval: MONTHLY,
-    legacy: true,
     tags: [],
   },
   746137: {
@@ -140,7 +133,6 @@ export const PLANS = {
     limits: { rooms: -1, devices: 50, timers: -1, messages: -1 },
     permissions: [LICENSED, API_ACCESS, CUSTOM_LOGO, CUSTOM_THEMING],
     billingInterval: YEARLY,
-    legacy: true,
     tags: [],
   },
   746139: {
@@ -151,7 +143,6 @@ export const PLANS = {
     limits: { rooms: -1, devices: 50, timers: -1, messages: -1 },
     permissions: [LICENSED, API_ACCESS, CUSTOM_LOGO, CUSTOM_THEMING],
     billingInterval: ONE_TIME,
-    legacy: true,
     tags: [],
   },
   // 2021-12
@@ -163,7 +154,6 @@ export const PLANS = {
     limits: { rooms: -1, devices: 50, timers: -1, messages: -1 },
     permissions: [LICENSED, API_ACCESS, CUSTOM_LOGO, CUSTOM_THEMING],
     billingInterval: MONTHLY,
-    legacy: true,
     tags: [],
   },
   652733: {
@@ -174,7 +164,6 @@ export const PLANS = {
     limits: { rooms: -1, devices: 50, timers: -1, messages: -1 },
     permissions: [LICENSED, API_ACCESS, CUSTOM_LOGO, CUSTOM_THEMING],
     billingInterval: YEARLY,
-    legacy: true,
     tags: [],
   },
 
@@ -193,7 +182,6 @@ export const PLANS = {
     limits: { rooms: -1, devices: 100, timers: -1, messages: -1 },
     permissions: [LICENSED, API_ACCESS, CUSTOM_LOGO, CUSTOM_THEMING],
     billingInterval: MONTHLY,
-    legacy: false,
     tags: [],
   },
   31180: {
@@ -204,7 +192,6 @@ export const PLANS = {
     limits: { rooms: -1, devices: 100, timers: -1, messages: -1 },
     permissions: [LICENSED, API_ACCESS, CUSTOM_LOGO, CUSTOM_THEMING],
     billingInterval: YEARLY,
-    legacy: false,
     tags: [],
   },
   31211: {
@@ -215,7 +202,6 @@ export const PLANS = {
     limits: { rooms: -1, devices: 100, timers: -1, messages: -1 },
     permissions: [LICENSED, API_ACCESS, CUSTOM_LOGO, CUSTOM_THEMING],
     billingInterval: ONE_TIME,
-    legacy: false,
     tags: [],
   },
 
@@ -231,7 +217,6 @@ export const PLANS = {
     limits: { rooms: -1, devices: 10, timers: -1, messages: -1 },
     permissions: [LICENSED, API_ACCESS, CUSTOM_LOGO],
     billingInterval: MONTHLY,
-    legacy: false,
     tags: [],
   },
   31177: {
@@ -242,7 +227,6 @@ export const PLANS = {
     limits: { rooms: -1, devices: 10, timers: -1, messages: -1 },
     permissions: [LICENSED, API_ACCESS, CUSTOM_LOGO],
     billingInterval: YEARLY,
-    legacy: false,
     tags: [],
   },
   31210: {
@@ -253,7 +237,6 @@ export const PLANS = {
     limits: { rooms: -1, devices: 10, timers: -1, messages: -1 },
     permissions: [LICENSED, API_ACCESS, CUSTOM_LOGO],
     billingInterval: ONE_TIME,
-    legacy: false,
     tags: [],
   },
   // 2022-06
@@ -265,8 +248,7 @@ export const PLANS = {
     limits: { rooms: -1, devices: 50, timers: -1, messages: -1 },
     permissions: [LICENSED, API_ACCESS, CUSTOM_LOGO, CUSTOM_THEMING],
     billingInterval: MONTHLY,
-    legacy: true,
-    tags: [],
+    tags: ['legacy'],
   },
   20123: {
     id: 20123,
@@ -276,8 +258,7 @@ export const PLANS = {
     limits: { rooms: -1, devices: 50, timers: -1, messages: -1 },
     permissions: [LICENSED, API_ACCESS, CUSTOM_LOGO, CUSTOM_THEMING],
     billingInterval: YEARLY,
-    legacy: true,
-    tags: [],
+    tags: ['legacy'],
   },
   20126: {
     id: 20126,
@@ -287,8 +268,7 @@ export const PLANS = {
     limits: { rooms: -1, devices: 50, timers: -1, messages: -1 },
     permissions: [LICENSED, API_ACCESS, CUSTOM_LOGO, CUSTOM_THEMING],
     billingInterval: ONE_TIME,
-    legacy: true,
-    tags: [],
+    tags: ['legacy'],
   },
   // 2021-12
   11184: {
@@ -296,39 +276,36 @@ export const PLANS = {
     type: SUBSCRIPTION,
     name: 'dev.stagetimer.io Pro Monthly (2021-12)',
     label: PRO,
-    limits: { rooms: -1, devices: -1, timers: -1, messages: -1 },
+    limits: { rooms: -1, devices: 50, timers: -1, messages: -1 },
     permissions: [LICENSED, API_ACCESS, CUSTOM_LOGO, CUSTOM_THEMING],
     billingInterval: MONTHLY,
-    legacy: true,
-    tags: [],
+    tags: ['legacy'],
   },
   11170: {
     id: 11170,
     type: SUBSCRIPTION,
     name: 'dev.stagetimer.io Pro Yearly (2021-12)',
     label: PRO,
-    limits: { rooms: -1, devices: -1, timers: -1, messages: -1 },
+    limits: { rooms: -1, devices: 50, timers: -1, messages: -1 },
     permissions: [LICENSED, API_ACCESS, CUSTOM_LOGO, CUSTOM_THEMING],
     billingInterval: YEARLY,
-    legacy: true,
-    tags: [],
+    tags: ['legacy'],
   },
 
   /******************************************
    * Enterprise
    ******************************************/
 
-   2001: {
-     id: 2001,
-     type: SUBSCRIPTION,
-     name: 'stagetimer.io Enterprise Pro 20',
-     label: PRO,
-     limits: { rooms: -1, devices: 20, timers: -1, messages: -1 },
-     permissions: [LICENSED, API_ACCESS, CUSTOM_LOGO],
-     billingInterval: YEARLY,
-     legacy: false,
-     tags: ['enterprise'],
-   },
+  2001: {
+    id: 2001,
+    type: SUBSCRIPTION,
+    name: 'stagetimer.io Enterprise Pro 20',
+    label: PRO,
+    limits: { rooms: -1, devices: 20, timers: -1, messages: -1 },
+    permissions: [LICENSED, API_ACCESS, CUSTOM_LOGO],
+    billingInterval: YEARLY,
+    tags: ['enterprise'],
+  },
 
   /******************************************
    * Special
@@ -342,7 +319,6 @@ export const PLANS = {
     limits: { rooms: -1, devices: 100, timers: -1, messages: -1 },
     permissions: [FULL_ACCESS],
     billingInterval: NONE,
-    legacy: false,
     tags: [],
   },
   200: {
@@ -353,7 +329,6 @@ export const PLANS = {
     limits: { rooms: -1, devices: 100, timers: -1, messages: -1 },
     permissions: [LICENSED, API_ACCESS, CUSTOM_LOGO, CUSTOM_THEMING],
     billingInterval: NONE,
-    legacy: false,
     tags: [],
   },
 
@@ -369,7 +344,6 @@ export const PLANS = {
     limits: { rooms: 3, devices: 3, timers: 3, messages: 3 },
     permissions: [],
     billingInterval: NONE,
-    legacy: false,
     tags: [],
   },
 }

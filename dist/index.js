@@ -419,7 +419,6 @@ const PLANS = {
     limits: { rooms: -1, devices: 100, timers: -1, messages: -1 },
     permissions: [LICENSED, API_ACCESS, CUSTOM_LOGO, CUSTOM_THEMING],
     billingInterval: MONTHLY,
-    legacy: false,
     tags: []
   },
   777755: {
@@ -430,7 +429,6 @@ const PLANS = {
     limits: { rooms: -1, devices: 100, timers: -1, messages: -1 },
     permissions: [LICENSED, API_ACCESS, CUSTOM_LOGO, CUSTOM_THEMING],
     billingInterval: YEARLY,
-    legacy: false,
     tags: []
   },
   777758: {
@@ -441,7 +439,6 @@ const PLANS = {
     limits: { rooms: -1, devices: 100, timers: -1, messages: -1 },
     permissions: [LICENSED, API_ACCESS, CUSTOM_LOGO, CUSTOM_THEMING],
     billingInterval: ONE_TIME,
-    legacy: false,
     tags: []
   },
   777754: {
@@ -452,7 +449,6 @@ const PLANS = {
     limits: { rooms: -1, devices: 10, timers: -1, messages: -1 },
     permissions: [LICENSED, API_ACCESS, CUSTOM_LOGO],
     billingInterval: MONTHLY,
-    legacy: false,
     tags: []
   },
   777753: {
@@ -463,7 +459,6 @@ const PLANS = {
     limits: { rooms: -1, devices: 10, timers: -1, messages: -1 },
     permissions: [LICENSED, API_ACCESS, CUSTOM_LOGO],
     billingInterval: YEARLY,
-    legacy: false,
     tags: []
   },
   777757: {
@@ -474,7 +469,6 @@ const PLANS = {
     limits: { rooms: -1, devices: 10, timers: -1, messages: -1 },
     permissions: [LICENSED, API_ACCESS, CUSTOM_LOGO],
     billingInterval: ONE_TIME,
-    legacy: false,
     tags: []
   },
   746138: {
@@ -485,7 +479,6 @@ const PLANS = {
     limits: { rooms: -1, devices: 50, timers: -1, messages: -1 },
     permissions: [LICENSED, API_ACCESS, CUSTOM_LOGO, CUSTOM_THEMING],
     billingInterval: MONTHLY,
-    legacy: true,
     tags: []
   },
   746137: {
@@ -496,7 +489,6 @@ const PLANS = {
     limits: { rooms: -1, devices: 50, timers: -1, messages: -1 },
     permissions: [LICENSED, API_ACCESS, CUSTOM_LOGO, CUSTOM_THEMING],
     billingInterval: YEARLY,
-    legacy: true,
     tags: []
   },
   746139: {
@@ -507,7 +499,6 @@ const PLANS = {
     limits: { rooms: -1, devices: 50, timers: -1, messages: -1 },
     permissions: [LICENSED, API_ACCESS, CUSTOM_LOGO, CUSTOM_THEMING],
     billingInterval: ONE_TIME,
-    legacy: true,
     tags: []
   },
   652732: {
@@ -518,7 +509,6 @@ const PLANS = {
     limits: { rooms: -1, devices: 50, timers: -1, messages: -1 },
     permissions: [LICENSED, API_ACCESS, CUSTOM_LOGO, CUSTOM_THEMING],
     billingInterval: MONTHLY,
-    legacy: true,
     tags: []
   },
   652733: {
@@ -529,7 +519,6 @@ const PLANS = {
     limits: { rooms: -1, devices: 50, timers: -1, messages: -1 },
     permissions: [LICENSED, API_ACCESS, CUSTOM_LOGO, CUSTOM_THEMING],
     billingInterval: YEARLY,
-    legacy: true,
     tags: []
   },
   31179: {
@@ -540,7 +529,6 @@ const PLANS = {
     limits: { rooms: -1, devices: 100, timers: -1, messages: -1 },
     permissions: [LICENSED, API_ACCESS, CUSTOM_LOGO, CUSTOM_THEMING],
     billingInterval: MONTHLY,
-    legacy: false,
     tags: []
   },
   31180: {
@@ -551,7 +539,6 @@ const PLANS = {
     limits: { rooms: -1, devices: 100, timers: -1, messages: -1 },
     permissions: [LICENSED, API_ACCESS, CUSTOM_LOGO, CUSTOM_THEMING],
     billingInterval: YEARLY,
-    legacy: false,
     tags: []
   },
   31211: {
@@ -562,7 +549,6 @@ const PLANS = {
     limits: { rooms: -1, devices: 100, timers: -1, messages: -1 },
     permissions: [LICENSED, API_ACCESS, CUSTOM_LOGO, CUSTOM_THEMING],
     billingInterval: ONE_TIME,
-    legacy: false,
     tags: []
   },
   31178: {
@@ -573,7 +559,6 @@ const PLANS = {
     limits: { rooms: -1, devices: 10, timers: -1, messages: -1 },
     permissions: [LICENSED, API_ACCESS, CUSTOM_LOGO],
     billingInterval: MONTHLY,
-    legacy: false,
     tags: []
   },
   31177: {
@@ -584,7 +569,6 @@ const PLANS = {
     limits: { rooms: -1, devices: 10, timers: -1, messages: -1 },
     permissions: [LICENSED, API_ACCESS, CUSTOM_LOGO],
     billingInterval: YEARLY,
-    legacy: false,
     tags: []
   },
   31210: {
@@ -595,7 +579,6 @@ const PLANS = {
     limits: { rooms: -1, devices: 10, timers: -1, messages: -1 },
     permissions: [LICENSED, API_ACCESS, CUSTOM_LOGO],
     billingInterval: ONE_TIME,
-    legacy: false,
     tags: []
   },
   20122: {
@@ -606,8 +589,7 @@ const PLANS = {
     limits: { rooms: -1, devices: 50, timers: -1, messages: -1 },
     permissions: [LICENSED, API_ACCESS, CUSTOM_LOGO, CUSTOM_THEMING],
     billingInterval: MONTHLY,
-    legacy: true,
-    tags: []
+    tags: ["legacy"]
   },
   20123: {
     id: 20123,
@@ -617,8 +599,7 @@ const PLANS = {
     limits: { rooms: -1, devices: 50, timers: -1, messages: -1 },
     permissions: [LICENSED, API_ACCESS, CUSTOM_LOGO, CUSTOM_THEMING],
     billingInterval: YEARLY,
-    legacy: true,
-    tags: []
+    tags: ["legacy"]
   },
   20126: {
     id: 20126,
@@ -628,30 +609,37 @@ const PLANS = {
     limits: { rooms: -1, devices: 50, timers: -1, messages: -1 },
     permissions: [LICENSED, API_ACCESS, CUSTOM_LOGO, CUSTOM_THEMING],
     billingInterval: ONE_TIME,
-    legacy: true,
-    tags: []
+    tags: ["legacy"]
   },
   11184: {
     id: 11184,
     type: SUBSCRIPTION,
     name: "dev.stagetimer.io Pro Monthly (2021-12)",
     label: PRO,
-    limits: { rooms: -1, devices: -1, timers: -1, messages: -1 },
+    limits: { rooms: -1, devices: 50, timers: -1, messages: -1 },
     permissions: [LICENSED, API_ACCESS, CUSTOM_LOGO, CUSTOM_THEMING],
     billingInterval: MONTHLY,
-    legacy: true,
-    tags: []
+    tags: ["legacy"]
   },
   11170: {
     id: 11170,
     type: SUBSCRIPTION,
     name: "dev.stagetimer.io Pro Yearly (2021-12)",
     label: PRO,
-    limits: { rooms: -1, devices: -1, timers: -1, messages: -1 },
+    limits: { rooms: -1, devices: 50, timers: -1, messages: -1 },
     permissions: [LICENSED, API_ACCESS, CUSTOM_LOGO, CUSTOM_THEMING],
     billingInterval: YEARLY,
-    legacy: true,
-    tags: []
+    tags: ["legacy"]
+  },
+  2e3: {
+    id: 2e3,
+    type: SUBSCRIPTION,
+    name: "stagetimer.io Enterprise Pro",
+    label: PRO,
+    limits: { rooms: -1, devices: 10, timers: -1, messages: -1 },
+    permissions: [LICENSED, API_ACCESS, CUSTOM_LOGO],
+    billingInterval: YEARLY,
+    tags: ["enterprise"]
   },
   2001: {
     id: 2001,
@@ -661,7 +649,6 @@ const PLANS = {
     limits: { rooms: -1, devices: 20, timers: -1, messages: -1 },
     permissions: [LICENSED, API_ACCESS, CUSTOM_LOGO],
     billingInterval: YEARLY,
-    legacy: false,
     tags: ["enterprise"]
   },
   100: {
@@ -672,7 +659,6 @@ const PLANS = {
     limits: { rooms: -1, devices: 100, timers: -1, messages: -1 },
     permissions: [FULL_ACCESS],
     billingInterval: NONE$1,
-    legacy: false,
     tags: []
   },
   200: {
@@ -683,7 +669,6 @@ const PLANS = {
     limits: { rooms: -1, devices: 100, timers: -1, messages: -1 },
     permissions: [LICENSED, API_ACCESS, CUSTOM_LOGO, CUSTOM_THEMING],
     billingInterval: NONE$1,
-    legacy: false,
     tags: []
   },
   0: {
@@ -694,7 +679,6 @@ const PLANS = {
     limits: { rooms: 3, devices: 3, timers: 3, messages: 3 },
     permissions: [],
     billingInterval: NONE$1,
-    legacy: false,
     tags: []
   }
 };
@@ -849,12 +833,12 @@ function nextBillingAmount(payload) {
   }
   return 0;
 }
-function isAdmin(payload) {
-  const plan = getPlan(payload);
+function isAdmin(subscriptionEntity) {
+  const plan = getPlan(subscriptionEntity);
   return Boolean((plan == null ? void 0 : plan.label) === ADMIN);
 }
-function isEnterprise(payload, now = new Date()) {
-  const plan = getPlan(payload);
+function isEnterprise(subscriptionEntity, now = new Date()) {
+  const plan = getPlan(subscriptionEntity);
   return plan.tags.includes("enterprise");
 }
 function parseFirebaseDocument(payload) {
