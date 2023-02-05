@@ -376,7 +376,7 @@ export function getPlanById (id = 0) {
 }
 
 export function planCan (plan, permission) {
-  return plan?.permissions.includes(permission) || plan?.permissions.includes(FULL_ACCESS)
+  return Boolean(plan?.permissions.includes(permission) || plan?.permissions.includes(FULL_ACCESS))
 }
 
 /**

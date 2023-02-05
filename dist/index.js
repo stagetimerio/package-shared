@@ -697,7 +697,7 @@ function getPlanById(id = 0) {
   return PLANS[id] || FREE_PLAN;
 }
 function planCan(plan, permission) {
-  return (plan == null ? void 0 : plan.permissions.includes(permission)) || (plan == null ? void 0 : plan.permissions.includes(FULL_ACCESS));
+  return Boolean((plan == null ? void 0 : plan.permissions.includes(permission)) || (plan == null ? void 0 : plan.permissions.includes(FULL_ACCESS)));
 }
 function planName(subscriptionEntity) {
   const plan = getPlan(subscriptionEntity);
