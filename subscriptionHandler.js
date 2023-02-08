@@ -518,6 +518,10 @@ export function planIsActive (payload, now = new Date()) {
   return false
 }
 
+export function productActiveUntil (date) {
+  return addDays(new Date(date), PRODUCT_DAYS)
+}
+
 export function activeUntil (payload = '') {
   if (!payload || planIsArchived(payload) || isAdmin(payload)) return null
   if (payload?.type === SUBSCRIPTION) {
@@ -527,7 +531,7 @@ export function activeUntil (payload = '') {
     return date ? new Date(date) : null
   }
   if (payload?.type === PRODUCT) {
-    return addDays(new Date(payload.created), PRODUCT_DAYS)
+    return productActiveUntil(payload.created)
   }
   return payload.active_until ? new Date(payload.active_until) : null
 }

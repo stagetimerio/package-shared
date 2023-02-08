@@ -787,6 +787,9 @@ function planIsActive(payload, now = new Date()) {
   }
   return false;
 }
+function productActiveUntil(date) {
+  return addDays(new Date(date), PRODUCT_DAYS);
+}
 function activeUntil(payload = "") {
   if (!payload || planIsArchived(payload) || isAdmin(payload))
     return null;
@@ -799,7 +802,7 @@ function activeUntil(payload = "") {
     return date ? new Date(date) : null;
   }
   if ((payload == null ? void 0 : payload.type) === PRODUCT) {
-    return addDays(new Date(payload.created), PRODUCT_DAYS);
+    return productActiveUntil(payload.created);
   }
   return payload.active_until ? new Date(payload.active_until) : null;
 }
@@ -985,6 +988,7 @@ const subscriptionHandler = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object
   getActiveSubscription,
   planIsArchived,
   planIsActive,
+  productActiveUntil,
   activeUntil,
   activeUntilLabel,
   nextBillingAmount,
