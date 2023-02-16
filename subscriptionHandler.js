@@ -375,7 +375,8 @@ export function getPlanById (id = 0) {
   return PLANS[id] || FREE_PLAN
 }
 
-export function planCan (plan, permission) {
+export function planCan (plan, permission = null) {
+  if (!permission) return true
   return Boolean(plan?.permissions.includes(permission) || plan?.permissions.includes(FULL_ACCESS))
 }
 
