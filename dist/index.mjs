@@ -38,7 +38,8 @@ const VIEWER = "VIEWER";
 const CONTROLLER = "CONTROLLER";
 const AGENDA = "AGENDA";
 const MODERATOR = "MODERATOR";
-const views = { VIEWER, CONTROLLER, AGENDA, MODERATOR };
+const ANONYMOUS = "ANONYMOUS";
+const views = { VIEWER, CONTROLLER, AGENDA, MODERATOR, ANONYMOUS };
 const clientViews = { ...views };
 const clientViews$1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
@@ -46,6 +47,7 @@ const clientViews$1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defin
   CONTROLLER,
   AGENDA,
   MODERATOR,
+  ANONYMOUS,
   views,
   default: clientViews
 }, Symbol.toStringTag, { value: "Module" }));
