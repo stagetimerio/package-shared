@@ -861,48 +861,90 @@ function parsePaddlePrice({ gross = "", net = "", tax = "" } = {}) {
     tax: Number(String(tax.match(/[\d.,]+/)).replace(/,/g, ""))
   };
 }
+const changeLookupTable = {
+  [PRO + ONE_TIME]: {
+    [PRO + ONE_TIME]: [false, "Your plan"],
+    [PRO + MONTHLY]: [true, "Get Pro Monthly"],
+    [PRO + YEARLY]: [true, "Get Pro Yearly"],
+    [PREMIUM + ONE_TIME]: [true, "Get Premium on top"],
+    [PREMIUM + MONTHLY]: [true, "Get Premium Monthly"],
+    [PREMIUM + YEARLY]: [true, "Get Premium Yearly"]
+  },
+  [PRO + MONTHLY]: {
+    [PRO + ONE_TIME]: [false, "Included in your plan"],
+    [PRO + MONTHLY]: [false, "Your plan"],
+    [PRO + YEARLY]: [true, "Switch to Yearly"],
+    [PREMIUM + ONE_TIME]: [true, "Get Premium on top"],
+    [PREMIUM + MONTHLY]: [true, "Upgrade to Premium"],
+    [PREMIUM + YEARLY]: [true, "Upgrade to Premium"]
+  },
+  [PRO + YEARLY]: {
+    [PRO + ONE_TIME]: [false, "Included in your plan"],
+    [PRO + MONTHLY]: [true, "Switch to Monthly"],
+    [PRO + YEARLY]: [false, "Your plan"],
+    [PREMIUM + ONE_TIME]: [true, "Get Premium on top"],
+    [PREMIUM + MONTHLY]: [true, "Upgrade to Premium"],
+    [PREMIUM + YEARLY]: [true, "Upgrade to Premium"]
+  },
+  [PREMIUM + ONE_TIME]: {
+    [PRO + ONE_TIME]: [false, "Included in your plan"],
+    [PRO + MONTHLY]: [true, "Get Pro Monthly"],
+    [PRO + YEARLY]: [true, "Get Pro Yearly"],
+    [PREMIUM + ONE_TIME]: [false, "Your plan"],
+    [PREMIUM + MONTHLY]: [true, "Get Premium Monthly"],
+    [PREMIUM + YEARLY]: [true, "Get Premium Yearly"]
+  },
+  [PREMIUM + MONTHLY]: {
+    [PRO + ONE_TIME]: [false, "Included in your plan"],
+    [PRO + MONTHLY]: [true, "Downgrade to Pro Monthly"],
+    [PRO + YEARLY]: [true, "Downgrade to Pro Yearly"],
+    [PREMIUM + ONE_TIME]: [false, "Included in your plan"],
+    [PREMIUM + MONTHLY]: [false, "Your plan"],
+    [PREMIUM + YEARLY]: [true, "Switch to Yearly"]
+  },
+  [PREMIUM + YEARLY]: {
+    [PRO + ONE_TIME]: [false, "Included in your plan"],
+    [PRO + MONTHLY]: [true, "Downgrade to Pro Monthly"],
+    [PRO + YEARLY]: [true, "Downgrade to Pro Yearly"],
+    [PREMIUM + ONE_TIME]: [false, "Included in your plan"],
+    [PREMIUM + MONTHLY]: [true, "Switch to Monthly"],
+    [PREMIUM + YEARLY]: [false, "Your plan"]
+  },
+  default: {
+    [PRO + ONE_TIME]: [true, "Get Pro"],
+    [PRO + MONTHLY]: [true, "Get Pro Monthly"],
+    [PRO + YEARLY]: [true, "Get Pro Yearly"],
+    [PREMIUM + ONE_TIME]: [true, "Get Premium"],
+    [PREMIUM + MONTHLY]: [true, "Get Premium Monthly"],
+    [PREMIUM + YEARLY]: [true, "Get Premium Yearly"]
+  },
+  disabled: {
+    [PRO + ONE_TIME]: [false, "Disabled"],
+    [PRO + MONTHLY]: [false, "Disabled"],
+    [PRO + YEARLY]: [false, "Disabled"],
+    [PREMIUM + ONE_TIME]: [false, "Disabled"],
+    [PREMIUM + MONTHLY]: [false, "Disabled"],
+    [PREMIUM + YEARLY]: [false, "Disabled"]
+  }
+};
 function canChangeToPlan(activePlanId, targetPlanId) {
   if (activePlanId === void 0 || targetPlanId === void 0)
     return null;
   const activePlan = getPlanById(activePlanId);
   const targetPlan = getPlanById(targetPlanId);
-  let can = false;
-  let description = "";
-  let action = null;
-  if (activePlanId === targetPlanId) {
-    can = false;
-    description = "Your plan";
+  const activeSelector = activePlan.label + activePlan.billingInterval;
+  const targetSelector = targetPlan.label + targetPlan.billingInterval;
+  if (activePlan.label === ADMIN || activePlan.type === ENTERPRISE) {
+    const [can2, description2] = changeLookupTable.disabled[targetSelector];
+    return { can: can2, description: description2 };
   }
-  if ([STARTER, TRIAL, ADMIN, PRO].includes(activePlan.label) && targetPlan.label === PREMIUM) {
-    can = true;
-    description = "Upgrade to Premium";
+  if ([STARTER, TRIAL].includes(activePlan.label)) {
+    const [can2, description2] = changeLookupTable.default[targetSelector];
+    return { can: can2, description: description2 };
   }
-  if ([STARTER, TRIAL, ADMIN].includes(activePlan.label) && targetPlan.label === PRO) {
-    can = true;
-    description = "Upgrade to Pro";
-  }
-  if (activePlan.label === PREMIUM && targetPlan.label === PRO) {
-    if (activePlan.type === SUBSCRIPTION && targetPlan.type === SUBSCRIPTION) {
-      can = true;
-      description = "Downgrade to Pro";
-    } else {
-      can = false;
-      description = "Included in your plan";
-    }
-  }
-  if (activePlan.label === targetPlan.label) {
-    if (activePlan.billingInterval !== YEARLY && targetPlan.billingInterval === YEARLY) {
-      can = true;
-      description = "Change to yearly";
-    } else if (activePlan.billingInterval !== MONTHLY && targetPlan.billingInterval === MONTHLY) {
-      can = true;
-      description = "Change to monthly";
-    } else if (activePlan.billingInterval !== ONE_TIME && targetPlan.billingInterval === ONE_TIME) {
-      can = false;
-      description = "Included in your plan";
-    }
-  }
-  return { can, description, action };
+  const lookupLvl2 = changeLookupTable[activeSelector] || changeLookupTable.default;
+  const [can, description] = lookupLvl2[targetSelector];
+  return { can, description };
 }
 function getElectronSubscription(planId, activeUntil2) {
   const plan = getPlanById(planId);
