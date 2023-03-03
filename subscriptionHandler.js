@@ -360,6 +360,79 @@ export const PLANS = {
   },
 }
 
+/**
+ * Lookup table for switching between plans.
+ * First value of array if the change is possible.
+ * Second value of array is the button label.
+ * @type {Object}
+ */
+const changeLookupTable = {
+  [PRO+ONE_TIME]: {
+    [PRO+ONE_TIME]: [false, 'Your plan'],
+    [PRO+MONTHLY]: [true, 'Get Pro'],
+    [PRO+YEARLY]: [true, 'Get Pro'],
+    [PREMIUM+ONE_TIME]: [true, 'Get Premium on top'],
+    [PREMIUM+MONTHLY]: [true, 'Get Premium'],
+    [PREMIUM+YEARLY]: [true, 'Get Premium'],
+  },
+  [PRO+MONTHLY]: {
+    [PRO+ONE_TIME]: [false, 'Included in your plan'],
+    [PRO+MONTHLY]: [false, 'Your plan'],
+    [PRO+YEARLY]: [true, 'Switch to Yearly'],
+    [PREMIUM+ONE_TIME]: [true, 'Get Premium on top'],
+    [PREMIUM+MONTHLY]: [true, 'Upgrade to Premium'],
+    [PREMIUM+YEARLY]: [true, 'Upgrade to Premium'],
+  },
+  [PRO+YEARLY]: {
+    [PRO+ONE_TIME]: [false, 'Included in your plan'],
+    [PRO+MONTHLY]: [true, 'Switch to Monthly'],
+    [PRO+YEARLY]: [false, 'Your plan'],
+    [PREMIUM+ONE_TIME]: [true, 'Get Premium on top'],
+    [PREMIUM+MONTHLY]: [true, 'Upgrade to Premium'],
+    [PREMIUM+YEARLY]: [true, 'Upgrade to Premium'],
+  },
+  [PREMIUM+ONE_TIME]: {
+    [PRO+ONE_TIME]: [false, 'Included in your plan'],
+    [PRO+MONTHLY]: [true, 'Get Pro'],
+    [PRO+YEARLY]: [true, 'Get Pro'],
+    [PREMIUM+ONE_TIME]: [false, 'Your plan'],
+    [PREMIUM+MONTHLY]: [true, 'Get Premium'],
+    [PREMIUM+YEARLY]: [true, 'Get Premium'],
+  },
+  [PREMIUM+MONTHLY]: {
+    [PRO+ONE_TIME]: [false, 'Included in your plan'],
+    [PRO+MONTHLY]: [true, 'Downgrade to Pro'],
+    [PRO+YEARLY]: [true, 'Downgrade to Pro'],
+    [PREMIUM+ONE_TIME]: [false, 'Included in your plan'],
+    [PREMIUM+MONTHLY]: [false, 'Your plan'],
+    [PREMIUM+YEARLY]: [true, 'Switch to Yearly'],
+  },
+  [PREMIUM+YEARLY]: {
+    [PRO+ONE_TIME]: [false, 'Included in your plan'],
+    [PRO+MONTHLY]: [true, 'Downgrade to Pro'],
+    [PRO+YEARLY]: [true, 'Downgrade to Pro'],
+    [PREMIUM+ONE_TIME]: [false, 'Included in your plan'],
+    [PREMIUM+MONTHLY]: [true, 'Switch to Monthly'],
+    [PREMIUM+YEARLY]: [false, 'Your plan'],
+  },
+  default: {
+    [PRO+ONE_TIME]: [true, 'Get Pro'],
+    [PRO+MONTHLY]: [true, 'Get Pro'],
+    [PRO+YEARLY]: [true, 'Get Pro'],
+    [PREMIUM+ONE_TIME]: [true, 'Get Premium'],
+    [PREMIUM+MONTHLY]: [true, 'Get Premium'],
+    [PREMIUM+YEARLY]: [true, 'Get Premium'],
+  },
+  disabled: {
+    [PRO+ONE_TIME]: [false, 'Disabled'],
+    [PRO+MONTHLY]: [false, 'Disabled'],
+    [PRO+YEARLY]: [false, 'Disabled'],
+    [PREMIUM+ONE_TIME]: [false, 'Disabled'],
+    [PREMIUM+MONTHLY]: [false, 'Disabled'],
+    [PREMIUM+YEARLY]: [false, 'Disabled'],
+  },
+}
+
 // Constants
 export const FREE_PLAN = PLANS[0]
 export const PRODUCT_DAYS = 10
@@ -592,77 +665,11 @@ export function parsePaddlePrice ({ gross = '', net = '', tax = '' } = {}) {
 }
 
 /**
- * Check if the user can upgrade/downgrade to tge given plan ID
+ * Check if the user can upgrade/downgrade to the given plan ID
  * @param  {Number} activePlanId
  * @param  {Number} targetPlanId
  * @return {Object<{ can: Boolean, description: String }> | null}
  */
-const changeLookupTable = {
-  [PRO+ONE_TIME]: {
-    [PRO+ONE_TIME]: [false, 'Your plan'],
-    [PRO+MONTHLY]: [true, 'Get Pro Monthly'],
-    [PRO+YEARLY]: [true, 'Get Pro Yearly'],
-    [PREMIUM+ONE_TIME]: [true, 'Get Premium on top'],
-    [PREMIUM+MONTHLY]: [true, 'Get Premium Monthly'],
-    [PREMIUM+YEARLY]: [true, 'Get Premium Yearly'],
-  },
-  [PRO+MONTHLY]: {
-    [PRO+ONE_TIME]: [false, 'Included in your plan'],
-    [PRO+MONTHLY]: [false, 'Your plan'],
-    [PRO+YEARLY]: [true, 'Switch to Yearly'],
-    [PREMIUM+ONE_TIME]: [true, 'Get Premium on top'],
-    [PREMIUM+MONTHLY]: [true, 'Upgrade to Premium'],
-    [PREMIUM+YEARLY]: [true, 'Upgrade to Premium'],
-  },
-  [PRO+YEARLY]: {
-    [PRO+ONE_TIME]: [false, 'Included in your plan'],
-    [PRO+MONTHLY]: [true, 'Switch to Monthly'],
-    [PRO+YEARLY]: [false, 'Your plan'],
-    [PREMIUM+ONE_TIME]: [true, 'Get Premium on top'],
-    [PREMIUM+MONTHLY]: [true, 'Upgrade to Premium'],
-    [PREMIUM+YEARLY]: [true, 'Upgrade to Premium'],
-  },
-  [PREMIUM+ONE_TIME]: {
-    [PRO+ONE_TIME]: [false, 'Included in your plan'],
-    [PRO+MONTHLY]: [true, 'Get Pro Monthly'],
-    [PRO+YEARLY]: [true, 'Get Pro Yearly'],
-    [PREMIUM+ONE_TIME]: [false, 'Your plan'],
-    [PREMIUM+MONTHLY]: [true, 'Get Premium Monthly'],
-    [PREMIUM+YEARLY]: [true, 'Get Premium Yearly'],
-  },
-  [PREMIUM+MONTHLY]: {
-    [PRO+ONE_TIME]: [false, 'Included in your plan'],
-    [PRO+MONTHLY]: [true, 'Downgrade to Pro Monthly'],
-    [PRO+YEARLY]: [true, 'Downgrade to Pro Yearly'],
-    [PREMIUM+ONE_TIME]: [false, 'Included in your plan'],
-    [PREMIUM+MONTHLY]: [false, 'Your plan'],
-    [PREMIUM+YEARLY]: [true, 'Switch to Yearly'],
-  },
-  [PREMIUM+YEARLY]: {
-    [PRO+ONE_TIME]: [false, 'Included in your plan'],
-    [PRO+MONTHLY]: [true, 'Downgrade to Pro Monthly'],
-    [PRO+YEARLY]: [true, 'Downgrade to Pro Yearly'],
-    [PREMIUM+ONE_TIME]: [false, 'Included in your plan'],
-    [PREMIUM+MONTHLY]: [true, 'Switch to Monthly'],
-    [PREMIUM+YEARLY]: [false, 'Your plan'],
-  },
-  default: {
-    [PRO+ONE_TIME]: [true, 'Get Pro'],
-    [PRO+MONTHLY]: [true, 'Get Pro Monthly'],
-    [PRO+YEARLY]: [true, 'Get Pro Yearly'],
-    [PREMIUM+ONE_TIME]: [true, 'Get Premium'],
-    [PREMIUM+MONTHLY]: [true, 'Get Premium Monthly'],
-    [PREMIUM+YEARLY]: [true, 'Get Premium Yearly'],
-  },
-  disabled: {
-    [PRO+ONE_TIME]: [false, 'Disabled'],
-    [PRO+MONTHLY]: [false, 'Disabled'],
-    [PRO+YEARLY]: [false, 'Disabled'],
-    [PREMIUM+ONE_TIME]: [false, 'Disabled'],
-    [PREMIUM+MONTHLY]: [false, 'Disabled'],
-    [PREMIUM+YEARLY]: [false, 'Disabled'],
-  },
-}
 export function canChangeToPlan (activePlanId, targetPlanId) {
   if (activePlanId === undefined || targetPlanId === undefined) return null
 
@@ -687,49 +694,6 @@ export function canChangeToPlan (activePlanId, targetPlanId) {
   const lookupLvl2 = changeLookupTable[activeSelector] || changeLookupTable.default
   const [can, description] = lookupLvl2[targetSelector]
   return { can, description }
-
-  // // active plan
-  // if (activePlanId === targetPlanId) return { can: false, description: 'Your plan' }
-  //   can = false
-  //   description = 'Your plan'
-  // }
-
-  // // target is subscription upgrade
-  // if ([STARTER, TRIAL, ADMIN, PRO].includes(activePlan.label) && targetPlan.label === PREMIUM) {
-  //   can = true
-  //   description = 'Upgrade to Premium'
-  // }
-  // if ([STARTER, TRIAL, ADMIN].includes(activePlan.label) && targetPlan.label === PRO) {
-  //   can = true
-  //   description = 'Upgrade to Pro'
-  // }
-
-  // // target is subscription downgrade
-  // if (activePlan.label === PREMIUM && targetPlan.label === PRO) {
-  //   if (activePlan.type === SUBSCRIPTION && targetPlan.type === SUBSCRIPTION) {
-  //     can = true
-  //     description = 'Downgrade to Pro'
-  //   } else {
-  //     can = false
-  //     description = 'Included in your plan'
-  //   }
-  // }
-
-  // // target is a billing interval change
-  // if (activePlan.label === targetPlan.label) {
-  //   if (activePlan.billingInterval !== YEARLY && targetPlan.billingInterval === YEARLY) {
-  //     can = true
-  //     description = 'Change to yearly'
-  //   } else if (activePlan.billingInterval !== MONTHLY && targetPlan.billingInterval === MONTHLY) {
-  //     can = true
-  //     description = 'Change to monthly'
-  //   } else if (activePlan.billingInterval !== ONE_TIME && targetPlan.billingInterval === ONE_TIME) {
-  //     can = false
-  //     description = 'Included in your plan'
-  //   }
-  // }
-
-  // return { can, description }
 }
 
 export function getElectronSubscription (planId, activeUntil) {
