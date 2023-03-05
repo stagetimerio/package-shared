@@ -1142,6 +1142,15 @@ const timerTypes$1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.define
   types,
   default: timerTypes
 }, Symbol.toStringTag, { value: "Module" }));
+const QUEUE_EMAIL = "functions-queue-email";
+const QUEUE_AIRTABLE = "functions-queue-airtable";
+const QUEUE_STATS = "functions-queue-stats";
+const functionQueues = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
+  __proto__: null,
+  QUEUE_EMAIL,
+  QUEUE_AIRTABLE,
+  QUEUE_STATS
+}, Symbol.toStringTag, { value: "Module" }));
 export {
   clientLifecycle,
   clientStates,
@@ -1149,6 +1158,7 @@ export {
   countdownFormats$2 as countdownFormats,
   customizeOptions,
   electronConstants$1 as electronConstants,
+  functionQueues,
   messageColors$1 as messageColors,
   sortOptions$1 as sortOptions,
   subscriptionHandler,
