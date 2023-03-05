@@ -1145,11 +1145,13 @@ const timerTypes$1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.define
 const QUEUE_EMAIL = "functions-queue-email";
 const QUEUE_AIRTABLE = "functions-queue-airtable";
 const QUEUE_STATS = "functions-queue-stats";
+const QUEUE_DATA = "functions-queue-data";
 const functionQueues = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
   QUEUE_EMAIL,
   QUEUE_AIRTABLE,
-  QUEUE_STATS
+  QUEUE_STATS,
+  QUEUE_DATA
 }, Symbol.toStringTag, { value: "Module" }));
 export {
   clientLifecycle,
