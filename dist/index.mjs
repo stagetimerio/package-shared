@@ -51,40 +51,43 @@ const clientViews$1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defin
   views,
   default: clientViews
 }, Symbol.toStringTag, { value: "Module" }));
-const MMMSSF = "MMMSSF";
-const MMMSS = "MMMSS";
-const HHMMSSF = "HHMMSSF";
-const HHMMSS$1 = "HHMMSS";
-const DHMS = "DHMS";
-const DHHMMSSF = "DHHMMSSF";
 const DHHMMSS = "DHHMMSS";
-const countdownFormats = { MMMSSF, MMMSS, HHMMSSF, HHMMSS: HHMMSS$1, DHMS, DHHMMSSF, DHHMMSS };
-const DEFAULT_COUNTDOWN_FORMAT = HHMMSS$1;
-const withDecimals = (val) => [MMMSSF, HHMMSSF, DHHMMSSF].includes(val);
-const withHours = (val) => [HHMMSSF, HHMMSS$1, DHMS, DHHMMSSF, DHHMMSS].includes(val);
-const withDays = (val) => [DHMS, DHHMMSSF, DHHMMSS].includes(val);
+const DHHMMSSF = "DHHMMSSF";
+const HHHMMSS = "HHHMMSS";
+const HHHMMSSF = "HHHMMSSF";
+const MMMSS = "MMMSS";
+const MMMSSF = "MMMSSF";
+const SSS = "SSS";
+const SSSF = "SSSF";
+const L_DHMS = "L_DHMS";
+const L_HMS = "L_HMS";
+const L_MS = "L_MS";
+const L_S = "L_S";
+const HHMMSS$1 = "HHMMSS";
+const countdownFormats = { DHHMMSS, DHHMMSSF, HHHMMSS, HHHMMSSF, MMMSS, MMMSSF, SSS, SSSF, L_DHMS, L_HMS, L_MS, L_S };
+const DEFAULT_COUNTDOWN_FORMAT = HHHMMSS;
 const countdownFormats$1 = {
   ...countdownFormats,
-  DEFAULT_COUNTDOWN_FORMAT,
   countdownFormats,
-  withDecimals,
-  withHours,
-  withDays
+  DEFAULT_COUNTDOWN_FORMAT
 };
 const countdownFormats$2 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
-  MMMSSF,
-  MMMSS,
-  HHMMSSF,
-  HHMMSS: HHMMSS$1,
-  DHMS,
-  DHHMMSSF,
   DHHMMSS,
+  DHHMMSSF,
+  HHHMMSS,
+  HHHMMSSF,
+  MMMSS,
+  MMMSSF,
+  SSS,
+  SSSF,
+  L_DHMS,
+  L_HMS,
+  L_MS,
+  L_S,
+  HHMMSS: HHMMSS$1,
   countdownFormats,
   DEFAULT_COUNTDOWN_FORMAT,
-  withDecimals,
-  withHours,
-  withDays,
   default: countdownFormats$1
 }, Symbol.toStringTag, { value: "Module" }));
 const fonts = {

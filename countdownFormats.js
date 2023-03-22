@@ -1,23 +1,24 @@
-export const MMMSSF = 'MMMSSF'
-export const MMMSS = 'MMMSS'
-export const HHMMSSF = 'HHMMSSF'
-export const HHMMSS = 'HHMMSS'
-export const DHMS = 'DHMS'
-export const DHHMMSSF = 'DHHMMSSF'
 export const DHHMMSS = 'DHHMMSS'
+export const DHHMMSSF = 'DHHMMSSF'
+export const HHHMMSS = 'HHHMMSS' // HHMMSS
+export const HHHMMSSF = 'HHHMMSSF' // HHMMSSF
+export const MMMSS = 'MMMSS'
+export const MMMSSF = 'MMMSSF'
+export const SSS = 'SSS'
+export const SSSF = 'SSSF'
+export const L_DHMS = 'L_DHMS' // DHMS
+export const L_HMS = 'L_HMS'
+export const L_MS = 'L_MS'
+export const L_S = 'L_S'
 
-export const countdownFormats = { MMMSSF, MMMSS, HHMMSSF, HHMMSS, DHMS, DHHMMSSF, DHHMMSS }
-export const DEFAULT_COUNTDOWN_FORMAT = HHMMSS
+// Legacy
+export const HHMMSS = 'HHMMSS'
 
-export const withDecimals = val => [MMMSSF, HHMMSSF, DHHMMSSF].includes(val)
-export const withHours = val => [HHMMSSF, HHMMSS, DHMS, DHHMMSSF, DHHMMSS].includes(val)
-export const withDays = val => [DHMS, DHHMMSSF, DHHMMSS].includes(val)
+export const countdownFormats = { DHHMMSS, DHHMMSSF, HHHMMSS, HHHMMSSF, MMMSS, MMMSSF, SSS, SSSF, L_DHMS, L_HMS, L_MS, L_S }
+export const DEFAULT_COUNTDOWN_FORMAT = HHHMMSS
 
 export default {
   ...countdownFormats,
-  DEFAULT_COUNTDOWN_FORMAT,
   countdownFormats,
-  withDecimals,
-  withHours,
-  withDays,
+  DEFAULT_COUNTDOWN_FORMAT,
 }
