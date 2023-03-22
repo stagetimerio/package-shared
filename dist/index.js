@@ -307,67 +307,6 @@ const messageColors$1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.def
   colors,
   default: messageColors
 }, Symbol.toStringTag, { value: "Module" }));
-const STOP = "stop";
-const CONTINUE = "continue";
-const behaviors = { STOP, CONTINUE };
-const timerBehaviors = { ...behaviors };
-const timerBehaviors$1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
-  __proto__: null,
-  STOP,
-  CONTINUE,
-  behaviors,
-  default: timerBehaviors
-}, Symbol.toStringTag, { value: "Module" }));
-const AUTO = "AUTO";
-const HHMMSS = "H:mm:ss";
-const HHMM = "H:mm";
-const HHMMSS_AM = "h:mm:ss aa";
-const HHMM_AM = "h:mm aa";
-const HHMMSS_12H = "h:mm:ss";
-const HHMM_12H = "h:mm";
-const DEFAULT_H12 = HHMMSS_AM;
-const DEFAULT_H24 = HHMMSS;
-const isH12 = (todFormat2) => [HHMMSS_AM, HHMM_AM, HHMMSS_12H, HHMM_12H].includes(todFormat2);
-const isH24 = (todFormat2) => [HHMMSS, HHMM].includes(todFormat2);
-const formats = { AUTO, HHMMSS, HHMM, HHMMSS_AM, HHMM_AM, HHMMSS_12H, HHMM_12H };
-const todFormats = {
-  ...formats,
-  DEFAULT_H12,
-  DEFAULT_H24,
-  isH12,
-  isH24
-};
-const todFormats$1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
-  __proto__: null,
-  AUTO,
-  HHMMSS,
-  HHMM,
-  HHMMSS_AM,
-  HHMM_AM,
-  HHMMSS_12H,
-  HHMM_12H,
-  DEFAULT_H12,
-  DEFAULT_H24,
-  isH12,
-  isH24,
-  formats,
-  default: todFormats
-}, Symbol.toStringTag, { value: "Module" }));
-const countdownFormat = { type: String, default: HHMMSS$1 };
-const todFormat = { type: String, default: AUTO };
-const behavior = { type: String, default: CONTINUE };
-const timersSettings = {
-  countdownFormat,
-  todFormat,
-  behavior
-};
-const timersSettings$1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
-  __proto__: null,
-  countdownFormat,
-  todFormat,
-  behavior,
-  default: timersSettings
-}, Symbol.toStringTag, { value: "Module" }));
 const UPDATED_DESC = "updated_desc";
 const CREATED_DESC = "created_desc";
 const CREATED_ASC = "created_asc";
@@ -1069,6 +1008,17 @@ const timerAppearances$1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.
   appearances,
   default: timerAppearances
 }, Symbol.toStringTag, { value: "Module" }));
+const STOP = "stop";
+const CONTINUE = "continue";
+const behaviors = { STOP, CONTINUE };
+const timerBehaviors = { ...behaviors };
+const timerBehaviors$1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
+  __proto__: null,
+  STOP,
+  CONTINUE,
+  behaviors,
+  default: timerBehaviors
+}, Symbol.toStringTag, { value: "Module" }));
 const NONE = "NONE";
 const BELL = "BELL";
 const DING = "DING";
@@ -1147,6 +1097,41 @@ const timerTypes$1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.define
   types,
   default: timerTypes
 }, Symbol.toStringTag, { value: "Module" }));
+const AUTO = "AUTO";
+const HHMMSS = "H:mm:ss";
+const HHMM = "H:mm";
+const HHMMSS_AM = "h:mm:ss aa";
+const HHMM_AM = "h:mm aa";
+const HHMMSS_12H = "h:mm:ss";
+const HHMM_12H = "h:mm";
+const DEFAULT_H12 = HHMMSS_AM;
+const DEFAULT_H24 = HHMMSS;
+const isH12 = (todFormat) => [HHMMSS_AM, HHMM_AM, HHMMSS_12H, HHMM_12H].includes(todFormat);
+const isH24 = (todFormat) => [HHMMSS, HHMM].includes(todFormat);
+const formats = { AUTO, HHMMSS, HHMM, HHMMSS_AM, HHMM_AM, HHMMSS_12H, HHMM_12H };
+const todFormats = {
+  ...formats,
+  DEFAULT_H12,
+  DEFAULT_H24,
+  isH12,
+  isH24
+};
+const todFormats$1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
+  __proto__: null,
+  AUTO,
+  HHMMSS,
+  HHMM,
+  HHMMSS_AM,
+  HHMM_AM,
+  HHMMSS_12H,
+  HHMM_12H,
+  DEFAULT_H12,
+  DEFAULT_H24,
+  isH12,
+  isH24,
+  formats,
+  default: todFormats
+}, Symbol.toStringTag, { value: "Module" }));
 const QUEUE_EMAIL = "functions-queue-email";
 const QUEUE_AIRTABLE = "functions-queue-airtable";
 const QUEUE_STATS = "functions-queue-stats";
@@ -1174,5 +1159,4 @@ exports.timerChimes = timerChimes$1;
 exports.timerModes = timerModes$1;
 exports.timerTriggers = timerTriggers$1;
 exports.timerTypes = timerTypes$1;
-exports.timersSettings = timersSettings$1;
 exports.todFormats = todFormats$1;
