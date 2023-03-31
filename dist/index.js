@@ -934,7 +934,7 @@ function addDays(date, days) {
 function isValidDate(date) {
   return date instanceof Date && !isNaN(date);
 }
-const subscriptionHandler = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
+const subscriptionHandler_DEPRECATED = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
   SUBSCRIPTION,
   PRODUCT,
@@ -1154,7 +1154,7 @@ exports.electronConstants = electronConstants$1;
 exports.functionQueues = functionQueues;
 exports.messageColors = messageColors$1;
 exports.sortOptions = sortOptions$1;
-exports.subscriptionHandler = subscriptionHandler;
+exports.subscriptionHandler_DEPRECATED = subscriptionHandler_DEPRECATED;
 exports.timerAppearances = timerAppearances$1;
 exports.timerBehaviors = timerBehaviors$1;
 exports.timerChimes = timerChimes$1;
