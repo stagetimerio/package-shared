@@ -1134,12 +1134,14 @@ const QUEUE_EMAIL = "functions-queue-email";
 const QUEUE_AIRTABLE = "functions-queue-airtable";
 const QUEUE_STATS = "functions-queue-stats";
 const QUEUE_DATA = "functions-queue-data";
+const QUEUE_CLEANUP = "functions-queue-cleanup";
 const functionQueues = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
   QUEUE_EMAIL,
   QUEUE_AIRTABLE,
   QUEUE_STATS,
-  QUEUE_DATA
+  QUEUE_DATA,
+  QUEUE_CLEANUP
 }, Symbol.toStringTag, { value: "Module" }));
 export {
   clientLifecycle,
