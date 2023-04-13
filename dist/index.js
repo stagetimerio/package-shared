@@ -1145,6 +1145,21 @@ const functionQueues = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defi
   QUEUE_DATA,
   QUEUE_CLEANUP
 }, Symbol.toStringTag, { value: "Module" }));
+const TEAM_OWNER = "TEAM_OWNER";
+const TEAM_BILLING = "TEAM_BILLING";
+const TEAM_MODERATOR = "TEAM_MODERATOR";
+const TEAM_OPERATOR = "TEAM_OPERATOR";
+const roles = { TEAM_OWNER, TEAM_BILLING, TEAM_MODERATOR, TEAM_OPERATOR };
+const teamRoles = { ...roles };
+const teamRoles$1 = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
+  __proto__: null,
+  TEAM_OWNER,
+  TEAM_BILLING,
+  TEAM_MODERATOR,
+  TEAM_OPERATOR,
+  roles,
+  default: teamRoles
+}, Symbol.toStringTag, { value: "Module" }));
 exports.clientLifecycle = clientLifecycle;
 exports.clientStates = clientStates;
 exports.clientViews = clientViews$1;
@@ -1155,6 +1170,7 @@ exports.functionQueues = functionQueues;
 exports.messageColors = messageColors$1;
 exports.sortOptions = sortOptions$1;
 exports.subscriptionHandler_DEPRECATED = subscriptionHandler_DEPRECATED;
+exports.teamRoles = teamRoles$1;
 exports.timerAppearances = timerAppearances$1;
 exports.timerBehaviors = timerBehaviors$1;
 exports.timerChimes = timerChimes$1;
