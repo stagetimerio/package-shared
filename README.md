@@ -3,5 +3,5 @@
 ## Install
 
 ```sh
-npm i lhermann/stagetimer-shared
+npm i @stagetimerio/shared
 ```
