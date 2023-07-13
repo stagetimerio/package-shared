@@ -4,19 +4,19 @@ export const TEMPLATE_EVENT_LICENSE = 'event-license'
 export const TEMPLATE_EVENT_LICENSE_FOLLOW_UP = 'event-license-follow-up'
 export const TEMPLATE_MAINTENANCE_NOTICE = 'maintenance-notice'
 export const TEMPLATE_MEMBER_INVITE = 'member-invite'
-export const TEMPLATE_WELCOME_USER = 'drip-1-free'
-export const TEMPLATE_DRIP_2 = 'drip-2-free'
-export const TEMPLATE_DRIP_3 = 'drip-3-free'
-export const TEMPLATE_DRIP_4 = 'drip-4-free'
-export const TEMPLATE_DRIP_5 = 'drip-5-free'
-export const TEMPLATE_DRIP_6 = 'drip-6-free'
+export const TEMPLATE_DRIP_1_WELCOME = 'drip-1-welcome'
+export const TEMPLATE_DRIP_2 = 'drip-2'
+export const TEMPLATE_DRIP_3 = 'drip-3'
+export const TEMPLATE_DRIP_4 = 'drip-4'
+export const TEMPLATE_DRIP_5 = 'drip-5'
+export const TEMPLATE_DRIP_6 = 'drip-6'
 
 export const templateStreamMap = {
   [TEMPLATE_EVENT_LICENSE]: STREAM_TRANSACTIONAL,
   [TEMPLATE_EVENT_LICENSE_FOLLOW_UP]: STREAM_MARKETING,
   [TEMPLATE_MAINTENANCE_NOTICE]: STREAM_BROADCAST,
   [TEMPLATE_MEMBER_INVITE]: STREAM_TRANSACTIONAL,
-  [TEMPLATE_WELCOME_USER]: STREAM_TRANSACTIONAL,
+  [TEMPLATE_DRIP_1_WELCOME]: STREAM_TRANSACTIONAL,
   [TEMPLATE_DRIP_2]: STREAM_MARKETING,
   [TEMPLATE_DRIP_3]: STREAM_MARKETING,
   [TEMPLATE_DRIP_4]: STREAM_MARKETING,
