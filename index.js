@@ -1,3 +1,9 @@
+/*!
+ * @stagetimerio/shared
+ * © Lukas Hermann <hey@lukashermann.dev>
+ * All rights reserved.
+ */
+
 export * as clientLifecycle from './clientLifecycle.js'
 export * as clientStates from './clientStates.js'
 export * as clientViews from './clientViews.js'
