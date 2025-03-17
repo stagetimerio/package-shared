@@ -12,8 +12,8 @@ export const roleHierarchy = {
  *
  * @param {Object} team - The team object containing members
  * @param {String} uid - The user ID to check access for
- * @param {Boolean|String|Array} roles - The role(s) required for access:
- *   - true: any team member has access
+ * @param {Boolean|String|Array|null} [roles] - The role(s) required for access:
+ *   - null/undefined/false/true: any team member has access
  *   - String: specific role required
  *   - Array: any of the listed roles grants access
  * @param {Boolean} isAdmin - Whether the user is an admin (optional)
@@ -33,7 +33,7 @@ export function canAccessTeam (team, uid, roles, isAdmin = false) {
   if (!userRole) return false
 
   // If roles is true, any team membership grants access
-  if (roles === true) return true
+  if (!roles || roles === true) return true
 
   // If roles is a string (single role), check if user has the role or can access it via hierarchy
   if (typeof roles === 'string') {
