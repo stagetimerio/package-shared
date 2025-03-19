@@ -1,4 +1,4 @@
-import { TEAM_OWNER, TEAM_BILLING, TEAM_MEMBER } from './teamRoles.js'
+import { TEAM_OWNER, TEAM_BILLING, TEAM_MEMBER } from '../consts/teamRoles.js'
 
 // Role dependency configuration - defines which roles can access what
 export const roleHierarchy = {
