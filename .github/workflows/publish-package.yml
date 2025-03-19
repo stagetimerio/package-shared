@@ -1,0 +1,80 @@
+# This workflow will run tests using node and then publish a package to GitHub Packages when a tag is pushed
+# For more information see: https://docs.github.com/en/actions/publishing-packages/publishing-nodejs-packages
+
+name: Node.js Package
+
+on:
+  push:
+    tags:
+      - '*'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Write .npmrc file
+        run: |
+          echo //npm.pkg.github.com/:_authToken=${{ secrets.GITHUB_TOKEN }} > $HOME/.npmrc
+          echo @stagetimerio:registry=https://npm.pkg.github.com >> $HOME/.npmrc
+
+      - run: npm ci --loglevel=error
+
+      - run: npm run build
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: dist
+          path: dist/
+
+  test:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/download-artifact@v4
+        with:
+          name: dist
+          path: dist/
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Write .npmrc file
+        run: |
+          echo //npm.pkg.github.com/:_authToken=${{ secrets.GITHUB_TOKEN }} > $HOME/.npmrc
+          echo @stagetimerio:registry=https://npm.pkg.github.com >> $HOME/.npmrc
+
+      - run: npm ci --loglevel=error
+
+      - run: npm run test
+
+  publish:
+    needs: test
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/download-artifact@v4
+        with:
+          name: dist
+          path: dist/
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          registry-url: https://npm.pkg.github.com/
+
+      - run: npm publish
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
