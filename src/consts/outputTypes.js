@@ -1,0 +1,6 @@
+export const CONTROLLER = 'OUTPUT_CONTROLLER'
+export const OPERATOR = 'OUTPUT_OPERATOR'
+export const VIEWER = 'OUTPUT_VIEWER'
+export const AGENDA = 'OUTPUT_AGENDA'
+export const MODERATOR = 'OUTPUT_MODERATOR'
+export const CUSTOM = 'OUTPUT_CUSTOM'
