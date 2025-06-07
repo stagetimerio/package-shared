@@ -26,6 +26,7 @@ export * as emailTemplates from './src/consts/emailTemplates.js'
 export * as emailStreams from './src/consts/emailStreams.js'
 export * as outputTypes from './src/consts/outputTypes.js'
 export * as outputElements from './src/consts/outputElements.js'
+export * as accessRights from './src/consts/accessRights.js'
 
 // Utils
 export * from './src/utils/canAccessTeam.js'
