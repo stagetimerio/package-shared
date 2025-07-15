@@ -13,7 +13,6 @@ export const L_DHMS = 'L_DHMS'
 export const L_HMS = 'L_HMS'
 export const L_MS = 'L_MS'
 export const L_S = 'L_S'
-export const INHERIT = 'INHERIT'
 
 // Legacy
 export const HHMMSS = 'HHMMSS'

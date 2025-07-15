@@ -5,7 +5,6 @@ export const HHMMSS_AM = 'h:mm:ss aa'
 export const HHMM_AM = 'h:mm aa'
 export const HHMMSS_12H = 'h:mm:ss'
 export const HHMM_12H = 'h:mm'
-export const INHERIT = 'INHERIT'
 
 export const DEFAULT_H12 = HHMMSS_AM
 export const DEFAULT_H24 = HHMMSS
