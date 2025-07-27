@@ -1,2 +1,2 @@
-export const PLUS = '+'
+export const PLUS = '+' // DEFAULT
 export const MINUS = '-'
