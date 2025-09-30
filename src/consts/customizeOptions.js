@@ -46,13 +46,13 @@ export const backgrounds = {
   CUSTOM: 'BG_CUSTOM',
   DEFAULT: 'BG_DEFAULT',
   TRANSPARENT: 'BG_TRANSPARENT',
-  CROWD: '/assets/customize/background-crowd-1920.jpg',
-  CITY: '/assets/customize/background-new-york-1920.jpg',
-  STARS: '/assets/customize/background-stars-1920.jpg',
-  PENCILS: '/assets/customize/background-pencils-1920.jpg',
-  STREET: '/assets/customize/background-street-1920.jpg',
-  BLUE: '/assets/customize/background-blue-1920.jpg',
-  PARCHMENT: '/assets/customize/background-parchment-1920.jpg',
+  CROWD: '/spa-assets/customize/background-crowd-1920.jpg',
+  CITY: '/spa-assets/customize/background-new-york-1920.jpg',
+  STARS: '/spa-assets/customize/background-stars-1920.jpg',
+  PENCILS: '/spa-assets/customize/background-pencils-1920.jpg',
+  STREET: '/spa-assets/customize/background-street-1920.jpg',
+  BLUE: '/spa-assets/customize/background-blue-1920.jpg',
+  PARCHMENT: '/spa-assets/customize/background-parchment-1920.jpg',
 }
 
 export const headerFooterPositions = {
