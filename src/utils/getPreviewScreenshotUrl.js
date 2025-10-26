@@ -7,6 +7,7 @@ const FALLBACK_IMAGE = 'https://stagetimer.io/spa-assets/stagetimer-preview-v3.j
  * @param {Object} [options={}] - Configuration options
  * @param {string} [options.baseUrl='https://preview-screenshot.stagetimer.io'] - The base URL of the screenshot worker
  * @param {boolean} [options.removeTrailingSlash=false] - Whether to remove trailing slashes from paths
+ * @param {string} [options.cacheKey] - Cache key for cache busting (added as 'c' query parameter)
  * @returns {string} The preview screenshot URL
  *
  * @example
@@ -20,8 +21,12 @@ const FALLBACK_IMAGE = 'https://stagetimer.io/spa-assets/stagetimer-preview-v3.j
  * @example
  * getPreviewScreenshotUrl('https://stagetimer.io/output/123/', { removeTrailingSlash: true })
  * // => 'https://preview-screenshot.stagetimer.io/stagetimer.io__output__123.jpg'
+ *
+ * @example
+ * getPreviewScreenshotUrl('https://stagetimer.io/pricing', { cacheKey: 'v2' })
+ * // => 'https://preview-screenshot.stagetimer.io/stagetimer.io__pricing.jpg?c=v2'
  */
-export function getPreviewScreenshotUrl (url, { baseUrl = 'https://preview-screenshot.stagetimer.io', removeTrailingSlash = false } = {}) {
+export function getPreviewScreenshotUrl (url, { baseUrl = 'https://preview-screenshot.stagetimer.io', removeTrailingSlash = false, cacheKey } = {}) {
   // Parse the input URL
   let parsedUrl
   try {
@@ -46,8 +51,18 @@ export function getPreviewScreenshotUrl (url, { baseUrl = 'https://preview-scree
   // Replace slashes with double underscores for encoding
   const encodedPath = fullPath.replace(/\//g, '__')
 
-  // Build the worker URL
-  const screenshotUrl = `${baseUrl}/${encodedPath}.jpg${parsedUrl.search}`
+  // Build the worker URL using URL API
+  const screenshotUrl = new URL(`/${encodedPath}.jpg`, baseUrl)
 
-  return screenshotUrl
+  // Copy over original search params
+  for (const [key, value] of parsedUrl.searchParams) {
+    screenshotUrl.searchParams.set(key, value)
+  }
+
+  // Add cache key if provided
+  if (cacheKey) {
+    screenshotUrl.searchParams.set('c', cacheKey)
+  }
+
+  return screenshotUrl.toString()
 }

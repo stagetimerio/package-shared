@@ -74,11 +74,31 @@ describe('getPreviewScreenshotUrl', () => {
 
   it('handles complex query parameters with special characters', () => {
     const result = getPreviewScreenshotUrl('https://stagetimer.io/output/123/?foo=bar&baz=qux%20test')
-    expect(result).toBe('https://preview-screenshot.stagetimer.io/stagetimer.io__output__123__.jpg?foo=bar&baz=qux%20test')
+    expect(result).toBe('https://preview-screenshot.stagetimer.io/stagetimer.io__output__123__.jpg?foo=bar&baz=qux+test')
   })
 
   it('works with non-stagetimer.io domains', () => {
     const result = getPreviewScreenshotUrl('https://example.com/page')
     expect(result).toBe('https://preview-screenshot.stagetimer.io/example.com__page.jpg')
+  })
+
+  it('adds cache key as query parameter', () => {
+    const result = getPreviewScreenshotUrl('https://stagetimer.io/pricing', { cacheKey: 'v2' })
+    expect(result).toBe('https://preview-screenshot.stagetimer.io/stagetimer.io__pricing.jpg?c=v2')
+  })
+
+  it('adds cache key alongside existing query parameters', () => {
+    const result = getPreviewScreenshotUrl('https://stagetimer.io/output/123/?v=2&signature=abc', { cacheKey: 'v3' })
+    expect(result).toBe('https://preview-screenshot.stagetimer.io/stagetimer.io__output__123__.jpg?v=2&signature=abc&c=v3')
+  })
+
+  it('works without cache key', () => {
+    const result = getPreviewScreenshotUrl('https://stagetimer.io/pricing')
+    expect(result).toBe('https://preview-screenshot.stagetimer.io/stagetimer.io__pricing.jpg')
+  })
+
+  it('handles numeric cache key', () => {
+    const result = getPreviewScreenshotUrl('https://stagetimer.io/pricing', { cacheKey: '123' })
+    expect(result).toBe('https://preview-screenshot.stagetimer.io/stagetimer.io__pricing.jpg?c=123')
   })
 })
