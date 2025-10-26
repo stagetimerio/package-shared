@@ -31,3 +31,4 @@ export * as overtimePrefixes from './src/consts/overtimePrefixes.js'
 // Utils
 export * from './src/utils/canAccessTeam.js'
 export * from './src/utils/stepValue.js'
+export * from './src/utils/getPreviewScreenshotUrl.js'
