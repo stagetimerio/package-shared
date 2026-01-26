@@ -12,4 +12,9 @@ export const DEFAULT_H24 = HHMMSS
 export const isH12 = (todFormat) => [HHMMSS_AM, HHMM_AM, HHMMSS_12H, HHMM_12H].includes(todFormat)
 export const isH24 = (todFormat) => [HHMMSS, HHMM].includes(todFormat)
 
+export const resolve = (todFormat, hour12) => {
+  if (todFormat !== AUTO) return todFormat
+  return hour12 ? DEFAULT_H12 : DEFAULT_H24
+}
+
 export const formats = { AUTO, HHMMSS, HHMM, HHMMSS_AM, HHMM_AM, HHMMSS_12H, HHMM_12H }
