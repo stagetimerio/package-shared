@@ -25,6 +25,7 @@ export * as teamRoles from './src/consts/teamRoles.js'
 export * as emailTemplates from './src/consts/emailTemplates.js'
 export * as emailStreams from './src/consts/emailStreams.js'
 export * as outputElements from './src/consts/outputElements.js'
+export * as logoModes from './src/consts/logoModes.js'
 export * as accessRights from './src/consts/accessRights.js'
 export * as overtimePrefixes from './src/consts/overtimePrefixes.js'
 
