@@ -28,6 +28,7 @@ export * as outputElements from './src/consts/outputElements.js'
 export * as logoModes from './src/consts/logoModes.js'
 export * as accessRights from './src/consts/accessRights.js'
 export * as overtimePrefixes from './src/consts/overtimePrefixes.js'
+export * as apiPermissions from './src/consts/apiPermissions.js'
 
 // Utils
 export * from './src/utils/canAccessTeam.js'
