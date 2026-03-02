@@ -4,7 +4,7 @@ import { TEAM_OWNER, TEAM_BILLING, TEAM_MEMBER } from '../consts/teamRoles.js'
 export const roleHierarchy = {
   [TEAM_OWNER]: [TEAM_OWNER, TEAM_BILLING, TEAM_MEMBER],
   [TEAM_BILLING]: [TEAM_BILLING],
-  [TEAM_MEMBER]: [TEAM_MEMBER]
+  [TEAM_MEMBER]: [TEAM_MEMBER],
 }
 
 /**
