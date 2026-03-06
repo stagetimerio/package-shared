@@ -1,6 +1,7 @@
 {
   "name": "@stagetimerio/shared",
   "version": "1.19.1",
+  "type": "module",
   "description": "Shared Library for stagetimer.io",
   "main": "dist/index.js",
   "scripts": {
@@ -9,8 +10,8 @@
   },
   "exports": {
     ".": {
-      "require": "./dist/index.js",
-      "import": "./dist/index.mjs"
+      "require": "./dist/index.cjs",
+      "import": "./dist/index.js"
     }
   },
   "files": [

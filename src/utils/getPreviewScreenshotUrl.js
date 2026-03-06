@@ -31,8 +31,8 @@ export function getPreviewScreenshotUrl (url, { baseUrl = 'https://preview-scree
   let parsedUrl
   try {
     parsedUrl = new URL(url)
-  } catch (error) {
-    throw new Error(`Invalid URL: ${url}`)
+  } catch (cause) {
+    throw new Error(`Invalid URL: ${url}`, { cause })
   }
 
   // Handle localhost - return original URL as fallback
