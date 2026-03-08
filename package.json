@@ -24,12 +24,12 @@
   },
   "license": "ISC",
   "devDependencies": {
+    "@eslint/js": "^10.0.1",
     "eslint": "^10.0.2",
     "vite": "^7.3.1",
     "vitest": "^4.0.18"
   },
   "dependencies": {
-    "@eslint/js": "^10.0.1",
     "lodash": "^4.17.21"
   }
 }
