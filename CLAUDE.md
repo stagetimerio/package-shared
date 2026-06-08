@@ -77,6 +77,10 @@ import { timerModes, accessRights } from '@stagetimerio/shared'
 import { canAccessTeam, stepValue } from '@stagetimerio/shared'
 ```
 
+**Keep constants and utilities in separate files** — never mix util functions into a `consts/` file. Constants live in `src/consts/` and are re-exported as namespaces (`export * as name from ...`); utilities live in `src/utils/` and are re-exported flat (`export * from ...`) so consumers import them directly from the package root. This also keeps each util's tests alongside it in `src/utils/__tests__/`.
+
+A `consts/` file holding helper functions (e.g. a `canAccessX()` next to its access constants) is the anti-pattern to avoid: those helpers are then only reachable namespaced, and their tests can't sit in `utils/__tests__/`. Split them out.
+
 ## Build System
 
 - Uses **Vite** to bundle for both CommonJS and ESM
