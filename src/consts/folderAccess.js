@@ -1,27 +1,35 @@
-export const folderAccess = Object.freeze({
-  NONE: 'NONE',
-  READ: 'READ',
-  WRITE: 'WRITE',
-  ADMIN: 'ADMIN',
-})
+export const NONE_ACCESS_LEVEL = 'NONE'
+export const READ_ACCESS_LEVEL = 'READ'
+export const WRITE_ACCESS_LEVEL = 'WRITE'
+export const ADMIN_ACCESS_LEVEL = 'ADMIN'
 
-export const folderAccessLabels = Object.freeze({
-  [folderAccess.NONE]: 'No access',
-  [folderAccess.READ]: 'Read',
-  [folderAccess.WRITE]: 'Write',
-  [folderAccess.ADMIN]: 'Admin',
-})
+export const ACCESS_LEVEL_LABELS = {
+  [NONE_ACCESS_LEVEL]: 'No access',
+  [READ_ACCESS_LEVEL]: 'Read',
+  [WRITE_ACCESS_LEVEL]: 'Write',
+  [ADMIN_ACCESS_LEVEL]: 'Admin',
+}
 
-export const folderAccessOptions = [
-  { value: folderAccess.NONE, label: folderAccessLabels[folderAccess.NONE] },
-  { value: folderAccess.READ, label: folderAccessLabels[folderAccess.READ] },
-  { value: folderAccess.WRITE, label: folderAccessLabels[folderAccess.WRITE] },
-  { value: folderAccess.ADMIN, label: folderAccessLabels[folderAccess.ADMIN] },
+export const ACCESS_LEVEL_OPTIONS = [
+  { value: NONE_ACCESS_LEVEL, label: ACCESS_LEVEL_LABELS[NONE_ACCESS_LEVEL] },
+  { value: READ_ACCESS_LEVEL, label: ACCESS_LEVEL_LABELS[READ_ACCESS_LEVEL] },
+  { value: WRITE_ACCESS_LEVEL, label: ACCESS_LEVEL_LABELS[WRITE_ACCESS_LEVEL] },
+  { value: ADMIN_ACCESS_LEVEL, label: ACCESS_LEVEL_LABELS[ADMIN_ACCESS_LEVEL] },
 ]
 
-export const folderAccessRank = Object.freeze({
-  [folderAccess.NONE]: 0,
-  [folderAccess.READ]: 10,
-  [folderAccess.WRITE]: 20,
-  [folderAccess.ADMIN]: 30,
-})
+export const ACCESS_LEVEL_RANK = {
+  [NONE_ACCESS_LEVEL]: 0,
+  [READ_ACCESS_LEVEL]: 10,
+  [WRITE_ACCESS_LEVEL]: 20,
+  [ADMIN_ACCESS_LEVEL]: 30,
+}
+
+export default {
+  NONE_ACCESS_LEVEL,
+  READ_ACCESS_LEVEL,
+  WRITE_ACCESS_LEVEL,
+  ADMIN_ACCESS_LEVEL,
+  ACCESS_LEVEL_LABELS,
+  ACCESS_LEVEL_OPTIONS,
+  ACCESS_LEVEL_RANK,
+}

@@ -1,7 +1,12 @@
-import { folderAccess } from '../consts/folderAccess.js'
-import { folderAccessRank } from '../consts/folderAccess.js'
+import {
+  ADMIN_ACCESS_LEVEL,
+  NONE_ACCESS_LEVEL,
+  READ_ACCESS_LEVEL,
+  ACCESS_LEVEL_RANK,
+  WRITE_ACCESS_LEVEL,
+} from '../consts/folderAccess.js'
 
-const folderAccessValues = Object.values(folderAccess)
+const folderAccessValues = [NONE_ACCESS_LEVEL, READ_ACCESS_LEVEL, WRITE_ACCESS_LEVEL, ADMIN_ACCESS_LEVEL]
 
 export function normalizeFolderAccess(access) {
   if (access === null || access === undefined || access === '') return null
@@ -10,21 +15,39 @@ export function normalizeFolderAccess(access) {
 }
 
 export function canAccessFolder(actual, required) {
-  return (folderAccessRank[actual] ?? 0) >= (folderAccessRank[required] ?? 0)
+  if (!folderAccessValues.includes(actual) || !folderAccessValues.includes(required)) {
+    return false
+  }
+
+  const actualRank = ACCESS_LEVEL_RANK[actual] ?? 0
+  const requiredRank = ACCESS_LEVEL_RANK[required] ?? 0
+
+  return actualRank >= requiredRank
 }
 
 export function canWriteFolder(access) {
-  return canAccessFolder(access, folderAccess.WRITE)
+  return canAccessFolder(access, WRITE_ACCESS_LEVEL)
 }
 
 export function canAdminFolder(access) {
-  return canAccessFolder(access, folderAccess.ADMIN)
+  return canAccessFolder(access, ADMIN_ACCESS_LEVEL)
 }
 
 export function normalizeFolderId(folderId) {
-  if (Array.isArray(folderId)) folderId = folderId[0]
-  if (folderId === null || folderId === undefined) return null
-  folderId = String(folderId).trim()
-  if (!folderId || folderId === 'root' || folderId === 'null') return null
-  return folderId
+  if (Array.isArray(folderId)) {
+    folderId = folderId[0]
+  }
+
+  if (folderId === null || folderId === undefined) {
+    return null
+  }
+
+  const normalizedFolderId = String(folderId).trim()
+
+  if (!normalizedFolderId || normalizedFolderId === 'root' || normalizedFolderId === 'null') {
+    return null
+  }
+
+  return normalizedFolderId
 }
+

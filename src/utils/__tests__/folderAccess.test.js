@@ -1,5 +1,9 @@
 import { describe, expect, test } from 'vitest'
-import { folderAccess } from '../../consts/folderAccess.js'
+import {
+  ADMIN_ACCESS_LEVEL,
+  READ_ACCESS_LEVEL,
+  WRITE_ACCESS_LEVEL,
+} from '../../consts/folderAccess.js'
 import {
   canAccessFolder,
   canWriteFolder,
@@ -10,22 +14,22 @@ import {
 
 describe('folderAccess constants', () => {
   test('compares folder access by rank', () => {
-    expect(canAccessFolder(folderAccess.ADMIN, folderAccess.WRITE)).toBe(true)
-    expect(canAccessFolder(folderAccess.WRITE, folderAccess.ADMIN)).toBe(false)
-    expect(canAccessFolder(folderAccess.READ, folderAccess.READ)).toBe(true)
+    expect(canAccessFolder(ADMIN_ACCESS_LEVEL, WRITE_ACCESS_LEVEL)).toBe(true)
+    expect(canAccessFolder(WRITE_ACCESS_LEVEL, ADMIN_ACCESS_LEVEL)).toBe(false)
+    expect(canAccessFolder(READ_ACCESS_LEVEL, READ_ACCESS_LEVEL)).toBe(true)
   })
 
   test('checks write and admin access helpers', () => {
-    expect(canWriteFolder(folderAccess.READ)).toBe(false)
-    expect(canWriteFolder(folderAccess.WRITE)).toBe(true)
-    expect(canWriteFolder(folderAccess.ADMIN)).toBe(true)
+    expect(canWriteFolder(READ_ACCESS_LEVEL)).toBe(false)
+    expect(canWriteFolder(WRITE_ACCESS_LEVEL)).toBe(true)
+    expect(canWriteFolder(ADMIN_ACCESS_LEVEL)).toBe(true)
 
-    expect(canAdminFolder(folderAccess.WRITE)).toBe(false)
-    expect(canAdminFolder(folderAccess.ADMIN)).toBe(true)
+    expect(canAdminFolder(WRITE_ACCESS_LEVEL)).toBe(false)
+    expect(canAdminFolder(ADMIN_ACCESS_LEVEL)).toBe(true)
   })
 
   test('normalizes folder access values', () => {
-    expect(normalizeFolderAccess(folderAccess.READ)).toBe(folderAccess.READ)
+    expect(normalizeFolderAccess(READ_ACCESS_LEVEL)).toBe(READ_ACCESS_LEVEL)
     expect(normalizeFolderAccess('')).toBe(null)
     expect(normalizeFolderAccess(null)).toBe(null)
     expect(normalizeFolderAccess(undefined)).toBe(null)
