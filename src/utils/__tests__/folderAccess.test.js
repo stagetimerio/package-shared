@@ -1,14 +1,12 @@
 import { describe, expect, test } from 'vitest'
-import * as folderAccessConsts from '../folderAccess.js'
-
-const {
-  folderAccess,
+import { folderAccess } from '../../consts/folderAccess.js'
+import {
   canAccessFolder,
   canWriteFolder,
   canAdminFolder,
   normalizeFolderAccess,
   normalizeFolderId,
-} = folderAccessConsts
+} from '../folderAccess.js'
 
 describe('folderAccess constants', () => {
   test('compares folder access by rank', () => {
