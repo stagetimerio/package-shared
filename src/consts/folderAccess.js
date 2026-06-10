@@ -21,7 +21,7 @@ export const folderAccessOptions = [
 
 export const folderAccessRank = Object.freeze({
   [folderAccess.NONE]: 0,
-  [folderAccess.READ]: 1,
-  [folderAccess.WRITE]: 2,
-  [folderAccess.ADMIN]: 3,
+  [folderAccess.READ]: 10,
+  [folderAccess.WRITE]: 20,
+  [folderAccess.ADMIN]: 30,
 })
