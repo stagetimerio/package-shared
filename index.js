@@ -31,8 +31,10 @@ export * as logoModes from './src/consts/logoModes.js'
 export * as accessRights from './src/consts/accessRights.js'
 export * as overtimePrefixes from './src/consts/overtimePrefixes.js'
 export * as apiPermissions from './src/consts/apiPermissions.js'
+export * as assetRegistry from './src/consts/assetRegistry.js'
 
 // Utils
+export * from './src/utils/assetPaths.js'
 export * from './src/utils/canAccessTeam.js'
 export * from './src/utils/stepValue.js'
 export * from './src/utils/getPreviewScreenshotUrl.js'
