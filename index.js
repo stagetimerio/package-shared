@@ -35,6 +35,7 @@ export * as assetRegistry from './src/consts/assetRegistry.js'
 
 // Utils
 export * from './src/utils/assetPaths.js'
+export * from './src/utils/storageObjectPath.js'
 export * from './src/utils/canAccessTeam.js'
 export * from './src/utils/stepValue.js'
 export * from './src/utils/getPreviewScreenshotUrl.js'
