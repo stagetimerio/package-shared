@@ -72,4 +72,7 @@ export const ELEMENT_ASSETS = {
   [outputElements.QR_CODE]: [
     { path: 'logoImage', type: ASSET_TYPES.IMAGE },
   ],
+  [outputElements.PRESENTATION]: [
+    { path: 'idleImage', type: ASSET_TYPES.IMAGE },
+  ],
 }

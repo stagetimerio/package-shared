@@ -3,6 +3,7 @@ export const EDIT_TIMERS = 2
 export const EDIT_MESSAGES = 4
 export const EDIT_TRANSPORT = 8
 export const EDIT_ROOM = 16
+export const EDIT_PRESENTATION = 32
 export const FULL_ACCESS = 31
 
 // Access rights name lookup
@@ -12,5 +13,6 @@ export const NAME_LOOKUP = {
   [EDIT_MESSAGES]: 'EDIT_MESSAGES',
   [EDIT_TRANSPORT]: 'EDIT_TRANSPORT',
   [EDIT_ROOM]: 'EDIT_ROOM',
+  [EDIT_PRESENTATION]: 'EDIT_PRESENTATION',
   [FULL_ACCESS]: 'FULL_ACCESS',
 }
