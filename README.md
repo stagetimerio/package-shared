@@ -49,6 +49,7 @@ Each is a namespace of related values (e.g. `import { timerModes } from '@staget
 | `timerAppearances` | Timer appearance styles |
 | `timerBehaviors` | Timer end behaviors |
 | `timerChimes` | Timer chime sounds |
+| `timerFields` | Limits of timer custom fields |
 | `timerModes` | Timer counting modes |
 | `timerTriggers` | Timer trigger types |
 | `timerTypes` | Timer types |
@@ -102,6 +103,15 @@ Parse a Firestore `DocumentSnapshot` into a plain object with its `id` and times
 const doc = await firestore.collection('users').doc('123').get()
 const user = parseDocumentSnapshot(doc)
 // → { id: '123', name: '...', createdAt: Date, updatedAt: Date }
+```
+
+### `isValidFieldKey(key)` / `findInvalidFieldKey(value)`
+
+Check the keys of timer custom fields. A key cannot be empty, start with `$`, contain `.` or be `__proto__`, `constructor` or `prototype`. `findInvalidFieldKey` walks nested objects and arrays and returns the first invalid key.
+
+```js
+isValidFieldKey('vt_image')               // → true
+findInvalidFieldKey({ a: [{ $gt: 1 }] })  // → '$gt'
 ```
 
 ## Development
