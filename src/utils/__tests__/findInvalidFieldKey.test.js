@@ -3,11 +3,11 @@ import { isValidFieldKey } from '../isValidFieldKey.js'
 import { findInvalidFieldKey } from '../findInvalidFieldKey.js'
 
 describe('isValidFieldKey', () => {
-  test.each(['vlc', 'vt_image', 'a-b', 'Ü', 'price$'])('accepts %j', (key) => {
+  test.each(['vlc', 'vt_image', 'a-b', 'Ü', 'price$', 'VT image', 'Presenter\'s name', '🎬'])('accepts %j', (key) => {
     expect(isValidFieldKey(key)).toBe(true)
   })
 
-  test.each(['', '$set', 'a.b', '__proto__', 'constructor', 'prototype'])('refuses %j', (key) => {
+  test.each(['', '$set', 'a.b', '__proto__', 'constructor', 'prototype', ' vlc', 'vlc ', 'a\u0000b', 'a\nb', 'a\tb', 'a[b', 'a]b'])('refuses %j', (key) => {
     expect(isValidFieldKey(key)).toBe(false)
   })
 })
